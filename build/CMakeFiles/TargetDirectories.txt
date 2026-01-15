@@ -1,3 +1,0 @@
-/home/babamba/dev/lab/my_hanium/build/CMakeFiles/hanium_test.dir
-/home/babamba/dev/lab/my_hanium/build/CMakeFiles/edit_cache.dir
-/home/babamba/dev/lab/my_hanium/build/CMakeFiles/rebuild_cache.dir
