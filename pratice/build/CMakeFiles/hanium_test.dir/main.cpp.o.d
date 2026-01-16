@@ -372,4 +372,7 @@ CMakeFiles/hanium_test.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_statx.h \
  /home/babamba/dev/lab/my_hanium/pratice/array.hpp \
- /home/babamba/dev/lab/my_hanium/pratice/datacheck.hpp
+ /home/babamba/dev/lab/my_hanium/pratice/datacheck.hpp \
+ /usr/include/c++/13/atomic /usr/include/c++/13/thread \
+ /usr/include/c++/13/bits/std_thread.h \
+ /usr/include/c++/13/bits/this_thread_sleep.h

@@ -9,7 +9,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/babamba/dev/lab/my_hanium/pratice/array.cpp" "CMakeFiles/hanium_test.dir/array.cpp.o" "gcc" "CMakeFiles/hanium_test.dir/array.cpp.o.d"
+  "/home/babamba/dev/lab/my_hanium/pratice/capture.cpp" "CMakeFiles/hanium_test.dir/capture.cpp.o" "gcc" "CMakeFiles/hanium_test.dir/capture.cpp.o.d"
   "/home/babamba/dev/lab/my_hanium/pratice/main.cpp" "CMakeFiles/hanium_test.dir/main.cpp.o" "gcc" "CMakeFiles/hanium_test.dir/main.cpp.o.d"
+  "/home/babamba/dev/lab/my_hanium/pratice/save.cpp" "CMakeFiles/hanium_test.dir/save.cpp.o" "gcc" "CMakeFiles/hanium_test.dir/save.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

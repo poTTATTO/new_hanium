@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hanium_test.dir/array.cpp.o"
   "CMakeFiles/hanium_test.dir/array.cpp.o.d"
+  "CMakeFiles/hanium_test.dir/capture.cpp.o"
+  "CMakeFiles/hanium_test.dir/capture.cpp.o.d"
   "CMakeFiles/hanium_test.dir/main.cpp.o"
   "CMakeFiles/hanium_test.dir/main.cpp.o.d"
+  "CMakeFiles/hanium_test.dir/save.cpp.o"
+  "CMakeFiles/hanium_test.dir/save.cpp.o.d"
   "hanium_test"
   "hanium_test.pdb"
 )

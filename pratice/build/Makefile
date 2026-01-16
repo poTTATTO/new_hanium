@@ -153,6 +153,30 @@ array.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/array.cpp.s
 .PHONY : array.cpp.s
 
+capture.o: capture.cpp.o
+.PHONY : capture.o
+
+# target to build an object file
+capture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/capture.cpp.o
+.PHONY : capture.cpp.o
+
+capture.i: capture.cpp.i
+.PHONY : capture.i
+
+# target to preprocess a source file
+capture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/capture.cpp.i
+.PHONY : capture.cpp.i
+
+capture.s: capture.cpp.s
+.PHONY : capture.s
+
+# target to generate assembly for a file
+capture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/capture.cpp.s
+.PHONY : capture.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -177,6 +201,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+save.o: save.cpp.o
+.PHONY : save.o
+
+# target to build an object file
+save.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/save.cpp.o
+.PHONY : save.cpp.o
+
+save.i: save.cpp.i
+.PHONY : save.i
+
+# target to preprocess a source file
+save.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/save.cpp.i
+.PHONY : save.cpp.i
+
+save.s: save.cpp.s
+.PHONY : save.s
+
+# target to generate assembly for a file
+save.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/save.cpp.s
+.PHONY : save.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,9 +237,15 @@ help:
 	@echo "... array.o"
 	@echo "... array.i"
 	@echo "... array.s"
+	@echo "... capture.o"
+	@echo "... capture.i"
+	@echo "... capture.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... save.o"
+	@echo "... save.i"
+	@echo "... save.s"
 .PHONY : help
 
 

@@ -6,9 +6,13 @@
 #include <sys/stat.h> 
 #include<iostream>
 #include"array.hpp"
+#include<thread>
+#include<atomic>
+#include<chrono>
 
 int main(){
     
+
     cv::VideoCapture cap(0, cv::CAP_V4L2);
 
     if(!cap.isOpened()){
@@ -36,8 +40,8 @@ int main(){
         }
 
         int idx = frame_id % SIZE;
-        Array::DataArray[idx].CID = std::to_string(frame_id);
-        Array::DataArray[idx].data = std::move(frame);
+        Array::DataArray[idx].m_cid = std::to_string(frame_id);
+        Array::DataArray[idx].original_frame = std::move(frame);
         std::cout<<"Move"<<idx<<std::endl;
         std::string path = "/home/babamba/dev/lab/opencv/photo/ID_" + std::to_string(frame_id) + ".jpg";       
         // 저장 시도 및 결과 확인
@@ -50,21 +54,12 @@ int main(){
         //     std::cout << "저장 완료: " << path << std::endl;
         // }
 
-        // cv::imshow("Preview", frame); 
-        // cv::cvtColor(frame, gray, cv::COLOR_BGR2GRAY);
-        // cv::GaussianBlur(gray, blurred, cv::Size(5,5),0);
-        // cv::Canny(blurred, edge, 50, 150);
-
-        // cv::imshow("Original", frame);
-        // cv::imshow("Edge Detection", edge);
-
-        // if(cv::waitKey(1) == 'q'){
-        //     break;
-        // }
+        
     }
 
     for(size_t i =0; i<SIZE; i++){
-        std::cout<<i<<" "<<"CID : "<< Array::DataArray[i].CID<<std::endl;
+        if(Array::DataArray[i].m_cid.empty()) break;
+        std::cout<<i<<" "<<"CID : "<< Array::DataArray[i].m_cid<<std::endl;
     }
 
     cap.release();
