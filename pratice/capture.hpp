@@ -4,15 +4,26 @@
 #include<opencv2/highgui.hpp>
 #include<opencv2/opencv.hpp>
 #include"capture.hpp"
-#include"array.hpp"
-#include"save.hpp"
+#include"sharedResource.hpp"
+#include<thread>
+#include<cerrno>
+#define SIZE 300
+#define TEST_COUNT 1
+class CaptureWorker{
+private:    
+    SharedResourceManager& res;
+    std::thread capture_thread;
+    bool stop_thread = false;
 
-class Capture{
-    public:
+public:
     cv::VideoCapture cap;
     cv::Mat frame;
-    long long frame_id;
+    Long frame_id=0;
 
-    Capture();
-    void capture(Save& save_inst);
+    CaptureWorker(SharedResourceManager& r);
+    // ~CaptureWorker();
+    void start_worker();
+    void capture_task();
+    void do_capture();
+    void slot_init(Long idx);
 };

@@ -1,22 +1,23 @@
 #include<iostream>
 #include<queue>
-#include"datacheck.hpp"
 #include<thread>
 #include<atomic>
+#include<queue>
+#include<mutex>
+#include<condition_variable>
+#include"sharedResource.hpp"
 
-
-class Save{
+class SaveWorker{
+private:
+    SharedResourceManager& res;
+    std::thread save_thread;
+    bool stop_thread = false;
 
 public:
-    Save();
-    ~Save();
-    void start_save_thread(int frame_id);
-    void push_to_save_cid_queue(int);
-
-private:
-    std::string default_path = "home/babamba/deb/lab/opencv/photo/ID_";
-    std::thread save_thread;
-    std::queue<int> save_cid_queue;
-    void save_image_task(int frame_id);
-    void save_image(int frame_id);
-};
+    SaveWorker(SharedResourceManager& r);
+    ~SaveWorker();
+    void start_worker();
+    void save_task();
+    void do_save(Long idx);
+    
+ };

@@ -3,67 +3,49 @@
 #include<opencv2/highgui.hpp>
 #include<opencv2/opencv.hpp>
 #include<fstream>
-#include <sys/stat.h> 
+#include<sys/stat.h> 
 #include<iostream>
-#include"array.hpp"
 #include<thread>
 #include<atomic>
 #include<chrono>
+#include<csignal>
+#include"sharedResource.hpp"
+#include"save.hpp"
+#include"capture.hpp"
 
+std::atomic<bool> g_running{true};
+
+void signal_handler(int signal){
+    if(signal == SIGINT){
+        std::cout<<"종료 합니다."<<std::endl;
+        g_running = false;
+    }
+}
 int main(){
-    
+   std::signal(SIGINT, signal_handler);
 
-    cv::VideoCapture cap(0, cv::CAP_V4L2);
+   try{
+        SharedResourceManager res;
 
-    if(!cap.isOpened()){
-        std::cerr<<"카메라를 찾을 수 없습니다."<<std::endl;
-    }
-    
-    cap.set(cv::CAP_PROP_FPS, 30);
-    long long frame_id = -1;
+        SaveWorker saver(res);
+        CaptureWorker capturer(res);
 
-    cap.set(cv::CAP_PROP_FRAME_WIDTH,640);
-    cap.set(cv::CAP_PROP_FRAME_HEIGHT, 480);
+        saver.start_worker();
+        capturer.start_worker();
 
-    cv::Mat frame, gray, blurred, edge;
-    std::cout<<"시작하려면 아무 키나 누르세요..(종료 : q)"<<std::endl;
+        std::cout<<"종료 하려면 Ctrl + C를 누르세요"<<std::endl;
 
-    while(true){
-        cap>>frame;
-        frame_id++;
-
-        if(frame_id == SIZE) break;
-
-        if(frame.empty()){
-            std::cerr<<"프레임이 비엇습니다."<<std::endl;
-            break;
+        while(g_running){
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
-
-        int idx = frame_id % SIZE;
-        Array::DataArray[idx].m_cid = std::to_string(frame_id);
-        Array::DataArray[idx].original_frame = std::move(frame);
-        std::cout<<"Move"<<idx<<std::endl;
-        std::string path = "/home/babamba/dev/lab/opencv/photo/ID_" + std::to_string(frame_id) + ".jpg";       
-        // 저장 시도 및 결과 확인
+   }catch(const std::exception& e){
+    std::cerr<<"에러 발생 : "<<e.what()<<std::endl;
+    return 1;
+   }
 
 
-        // bool isSaved = cv::imwrite(path, frame);
-        // if(!isSaved) {
-        //     std::cerr << "저장 실패! 경로를 확인하세요: " << path << std::endl;
-        // } else {
-        //     std::cout << "저장 완료: " << path << std::endl;
-        // }
+    std::cout<<"[MAIN] 정상 종료"<<std::endl;
 
-        
-    }
-
-    for(size_t i =0; i<SIZE; i++){
-        if(Array::DataArray[i].m_cid.empty()) break;
-        std::cout<<i<<" "<<"CID : "<< Array::DataArray[i].m_cid<<std::endl;
-    }
-
-    cap.release();
-    cv::destroyAllWindows();
     return 0;
 
 }
