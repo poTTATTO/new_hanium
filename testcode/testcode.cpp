@@ -9,19 +9,68 @@
 #include<vector>
 #include<atomic>
 #include<chrono>
+#include<sodium.h>
+#include<iomanip>
+#include<cerrno>
 
-struct Counter{
-    std::atomic<int> countA{0};
-    std::atomic<int> countB{0};
-};
+// struct Counter{
+//     std::atomic<int> countA{0};
+//     std::atomic<int> countB{0};
+// };
 
-void work(std::atomic<int>& target, int iterations){
-    for(int i=0; i<iterations; i++){
-        target++;
+// void work(std::atomic<int>& target, int iterations){
+//     for(int i=0; i<iterations; i++){
+//         target++;
+//     }
+// }
+
+std::string compute_hash_sodium(const cv::Mat& frame){
+    if(sodium_init() < 0) return "SODIUM_INIT_FAILED";
+
+    cv::Mat gray;
+    if(frame.channels() > 1){
+        cv::cvtColor(frame, gray, cv::COLOR_BGR2GRAY);
+    }else{
+        gray = frame;
     }
+
+    if(!gray.isContinuous()) gray = gray.clone();
+
+    unsigned char hash[crypto_generichash_BYTES];
+
+    crypto_generichash(
+        hash, sizeof(hash),
+        gray.data,
+        gray.total() * gray.elemSize(),
+        NULL, 0
+    );
+
+    std::stringstream ss;
+    for(int i=0; i<sizeof(hash); i++){
+        ss<<std::hex<<std::setw(2)<<std::setfill('0')<<static_cast<int>(hash[i]);
+    }
+
+    return ss.str();
 }
 
 int main(){
+
+    std::string image_path = "../test_image_coco.jpg";
+    cv::Mat img = cv::imread(image_path);
+
+    if(img.empty()){
+        std::cerr<<"이미지를 읽을 수 없습니다. 경로를 확인"<<std::endl;
+        return -1;
+    }
+    std::cout<<compute_hash_sodium(img)<<std::endl;
+
+    
+
+
+
+
+
+
     // std::string image_path = "cat.jpeg";
     // cv::Mat img = cv::imread(image_path, cv::IMREAD_GRAYSCALE);
     // cv::Mat img_moved;
@@ -54,50 +103,50 @@ int main(){
     // cv::Point3f P3f(2,6,7);
     // std::cout<<"Point (3D) = " << P3f<<std::endl;
     
-    cv::VideoCapture cap(0, cv::CAP_V4L2);
+    // cv::VideoCapture cap(0, cv::CAP_V4L2);
 
-    if(!cap.isOpened()){
-        std::cerr<<"카메라를 찾을 수 없습니다."<<std::endl;
-    }
+    // if(!cap.isOpened()){
+    //     std::cerr<<"카메라를 찾을 수 없습니다."<<std::endl;
+    // }
     
-    cap.set(cv::CAP_PROP_FPS, 30);
-    long long frame_id = 0;
+    // cap.set(cv::CAP_PROP_FPS, 30);
+    // long long frame_id = 0;
 
-    cap.set(cv::CAP_PROP_FRAME_WIDTH,640);
-    cap.set(cv::CAP_PROP_FRAME_HEIGHT, 480);
+    // cap.set(cv::CAP_PROP_FRAME_WIDTH,640);
+    // cap.set(cv::CAP_PROP_FRAME_HEIGHT, 480);
 
-    cv::Mat frame, gray, blurred, edge;
-    std::cout<<"시작하려면 아무 키나 누르세요..(종료 : q)"<<std::endl;
+    // cv::Mat frame, gray, blurred, edge;
+    // std::cout<<"시작하려면 아무 키나 누르세요..(종료 : q)"<<std::endl;
 
-    while(true){
-        if(frame_id == 300) break;
-        cap>>frame;
-        frame_id++;
+    // while(true){
+    //     if(frame_id == 300) break;
+    //     cap>>frame;
+    //     frame_id++;
 
-        if(frame.empty()){
-            std::cerr<<"프레임이 비엇습니다."<<std::endl;
-            break;
-        }
+    //     if(frame.empty()){
+    //         std::cerr<<"프레임이 비엇습니다."<<std::endl;
+    //         break;
+    //     }
 
         
-        std::string path = "/home/babamba/dev/lab/opencv/photo/ID_" + std::to_string(frame_id) + ".jpg";       
-        // 저장 시도 및 결과 확인
-         auto total_start_time = std::chrono::steady_clock::now();
+    //     std::string path = "/home/babamba/dev/lab/opencv/photo/ID_" + std::to_string(frame_id) + ".jpg";       
+    //     // 저장 시도 및 결과 확인
+    //      auto total_start_time = std::chrono::steady_clock::now();
 
          
-        bool isSaved = cv::imwrite(path, frame);
-        if(!isSaved) {
-            std::cerr << "저장 실패! 경로를 확인하세요: " << path << std::endl;
-        } else {
-            std::cout << "저장 완료: " << path << std::endl;
-        }
-        auto total_end_time = std::chrono::steady_clock::now();
+    //     bool isSaved = cv::imwrite(path, frame);
+    //     if(!isSaved) {
+    //         std::cerr << "저장 실패! 경로를 확인하세요: " << path << std::endl;
+    //     } else {
+    //         std::cout << "저장 완료: " << path << std::endl;
+    //     }
+    //     auto total_end_time = std::chrono::steady_clock::now();
 
-        int duration = std::chrono::duration_cast<std::chrono::milliseconds>(total_end_time - total_start_time).count();
+    //     int duration = std::chrono::duration_cast<std::chrono::milliseconds>(total_end_time - total_start_time).count();
 
-        std::cout<<duration<<" ms"<<std::endl;
+    //     std::cout<<duration<<" ms"<<std::endl;
        
-    }   
+    // }   
     //     cv::imshow("Preview", frame); 
     //     // cv::cvtColor(frame, gray, cv::COLOR_BGR2GRAY);
     //     // cv::GaussianBlur(gray, blurred, cv::Size(5,5),0);
