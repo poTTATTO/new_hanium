@@ -420,5 +420,120 @@ CMakeFiles/hanium_test.dir/main.cpp.o: \
  /usr/include/aarch64-linux-gnu/bits/signal_ext.h \
  /home/cloud9/sangmin/new_hanium/pratice/sharedResource.hpp \
  /usr/include/c++/12/condition_variable \
+ /usr/include/zymkey/zkAppUtilsClass.h /usr/include/zymkey/zk_app_utils.h \
+ /usr/lib/gcc/aarch64-linux-gnu/12/include/stdbool.h \
+ /usr/include/zymkey/zk_app_utils.h /usr/include/zymkey/zk_b64.h \
  /home/cloud9/sangmin/new_hanium/pratice/save.hpp \
- /home/cloud9/sangmin/new_hanium/pratice/capture.hpp
+ /home/cloud9/sangmin/new_hanium/pratice/capture.hpp \
+ /home/cloud9/sangmin/new_hanium/pratice/processing.hpp \
+ /usr/include/sodium.h /usr/include/sodium/version.h \
+ /usr/include/sodium/export.h /usr/include/sodium/core.h \
+ /usr/include/sodium/crypto_aead_aes256gcm.h \
+ /usr/include/sodium/crypto_aead_chacha20poly1305.h \
+ /usr/include/sodium/crypto_aead_xchacha20poly1305.h \
+ /usr/include/sodium/crypto_auth.h \
+ /usr/include/sodium/crypto_auth_hmacsha512256.h \
+ /usr/include/sodium/crypto_auth_hmacsha512.h \
+ /usr/include/sodium/crypto_hash_sha512.h \
+ /usr/include/sodium/crypto_auth_hmacsha256.h \
+ /usr/include/sodium/crypto_hash_sha256.h \
+ /usr/include/sodium/crypto_auth_hmacsha512.h \
+ /usr/include/sodium/crypto_auth_hmacsha512256.h \
+ /usr/include/sodium/crypto_box.h \
+ /usr/include/sodium/crypto_box_curve25519xsalsa20poly1305.h \
+ /usr/include/sodium/crypto_stream_xsalsa20.h \
+ /usr/include/sodium/crypto_box_curve25519xsalsa20poly1305.h \
+ /usr/include/sodium/crypto_core_hsalsa20.h \
+ /usr/include/sodium/crypto_core_hchacha20.h \
+ /usr/include/sodium/crypto_core_salsa20.h \
+ /usr/include/sodium/crypto_core_salsa2012.h \
+ /usr/include/sodium/crypto_core_salsa208.h \
+ /usr/include/sodium/crypto_generichash.h \
+ /usr/include/sodium/crypto_generichash_blake2b.h \
+ /usr/include/sodium/crypto_generichash_blake2b.h \
+ /usr/include/sodium/crypto_hash.h \
+ /usr/include/sodium/crypto_hash_sha256.h \
+ /usr/include/sodium/crypto_hash_sha512.h \
+ /usr/include/sodium/crypto_kdf.h \
+ /usr/include/sodium/crypto_kdf_blake2b.h \
+ /usr/include/sodium/crypto_kdf_blake2b.h /usr/include/sodium/crypto_kx.h \
+ /usr/include/sodium/crypto_onetimeauth.h \
+ /usr/include/sodium/crypto_onetimeauth_poly1305.h \
+ /usr/include/sodium/crypto_onetimeauth_poly1305.h \
+ /usr/include/sodium/crypto_pwhash.h \
+ /usr/include/sodium/crypto_pwhash_argon2i.h \
+ /usr/include/sodium/crypto_pwhash_argon2id.h \
+ /usr/include/sodium/crypto_pwhash_argon2i.h \
+ /usr/include/sodium/crypto_scalarmult.h \
+ /usr/include/sodium/crypto_scalarmult_curve25519.h \
+ /usr/include/sodium/crypto_scalarmult_curve25519.h \
+ /usr/include/sodium/crypto_secretbox.h \
+ /usr/include/sodium/crypto_secretbox_xsalsa20poly1305.h \
+ /usr/include/sodium/crypto_secretbox_xsalsa20poly1305.h \
+ /usr/include/sodium/crypto_secretstream_xchacha20poly1305.h \
+ /usr/include/sodium/crypto_aead_xchacha20poly1305.h \
+ /usr/include/sodium/crypto_stream_chacha20.h \
+ /usr/include/sodium/crypto_shorthash.h \
+ /usr/include/sodium/crypto_shorthash_siphash24.h \
+ /usr/include/sodium/crypto_shorthash_siphash24.h \
+ /usr/include/sodium/crypto_sign.h \
+ /usr/include/sodium/crypto_sign_ed25519.h \
+ /usr/include/sodium/crypto_sign_ed25519.h \
+ /usr/include/sodium/crypto_stream.h \
+ /usr/include/sodium/crypto_stream_chacha20.h \
+ /usr/include/sodium/crypto_stream_salsa20.h \
+ /usr/include/sodium/crypto_stream_xsalsa20.h \
+ /usr/include/sodium/crypto_verify_16.h \
+ /usr/include/sodium/crypto_verify_32.h \
+ /usr/include/sodium/crypto_verify_64.h /usr/include/sodium/randombytes.h \
+ /usr/include/sodium/randombytes_internal_random.h \
+ /usr/include/sodium/randombytes.h \
+ /usr/include/sodium/randombytes_sysrandom.h \
+ /usr/include/sodium/runtime.h /usr/include/sodium/utils.h \
+ /usr/include/sodium/crypto_box_curve25519xchacha20poly1305.h \
+ /usr/include/sodium/crypto_stream_xchacha20.h \
+ /usr/include/sodium/crypto_core_ed25519.h \
+ /usr/include/sodium/crypto_core_ristretto255.h \
+ /usr/include/sodium/crypto_scalarmult_ed25519.h \
+ /usr/include/sodium/crypto_scalarmult_ristretto255.h \
+ /usr/include/sodium/crypto_secretbox_xchacha20poly1305.h \
+ /usr/include/sodium/crypto_pwhash_scryptsalsa208sha256.h \
+ /usr/include/sodium/crypto_stream_salsa2012.h \
+ /usr/include/sodium/crypto_stream_salsa208.h \
+ /usr/include/sodium/crypto_stream_xchacha20.h \
+ /usr/include/curlpp/cURLpp.hpp \
+ /usr/include/aarch64-linux-gnu/curl/curl.h \
+ /usr/include/aarch64-linux-gnu/curl/curlver.h \
+ /usr/include/aarch64-linux-gnu/curl/system.h \
+ /usr/include/aarch64-linux-gnu/sys/socket.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
+ /usr/include/aarch64-linux-gnu/bits/socket.h \
+ /usr/include/aarch64-linux-gnu/bits/socket_type.h \
+ /usr/include/aarch64-linux-gnu/bits/sockaddr.h \
+ /usr/lib/linux/uapi/arm64/asm/socket.h /usr/include/asm-generic/socket.h \
+ /usr/lib/linux/uapi/arm64/asm/sockios.h \
+ /usr/include/asm-generic/sockios.h \
+ /usr/include/aarch64-linux-gnu/bits/types/struct_osockaddr.h \
+ /usr/include/aarch64-linux-gnu/curl/easy.h \
+ /usr/include/aarch64-linux-gnu/curl/multi.h \
+ /usr/include/aarch64-linux-gnu/curl/curl.h \
+ /usr/include/aarch64-linux-gnu/curl/urlapi.h \
+ /usr/include/aarch64-linux-gnu/curl/options.h \
+ /usr/include/aarch64-linux-gnu/curl/header.h \
+ /usr/include/aarch64-linux-gnu/curl/websockets.h \
+ /usr/include/curlpp/Easy.hpp /usr/include/curlpp/internal/CurlHandle.hpp \
+ /usr/include/curlpp/Exception.hpp /usr/include/curlpp/Types.hpp \
+ /usr/include/curlpp/internal/CurlHandle.inl \
+ /usr/include/curlpp/internal/OptionList.hpp \
+ /usr/include/curlpp/OptionBase.hpp /usr/include/curlpp/Option.hpp \
+ /usr/include/curlpp/internal/OptionContainer.hpp \
+ /usr/include/curlpp/internal/OptionContainerType.hpp \
+ /usr/include/curlpp/internal/SList.hpp /usr/include/curlpp/Form.hpp \
+ /usr/include/utilspp/clone_ptr.hpp /usr/include/c++/12/cassert \
+ /usr/include/curlpp/internal/OptionContainer.inl \
+ /usr/include/curlpp/OptionBase.hpp /usr/include/curlpp/Option.inl \
+ /usr/include/curlpp/internal/OptionSetter.hpp \
+ /usr/include/curlpp/internal/CurlHandle.hpp \
+ /usr/include/curlpp/internal/OptionSetter.inl \
+ /usr/include/curlpp/Exception.hpp /usr/include/curlpp/Easy.inl \
+ /usr/include/curlpp/Options.hpp

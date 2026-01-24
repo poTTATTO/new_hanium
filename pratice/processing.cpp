@@ -5,7 +5,7 @@ ProcessingWorker::ProcessingWorker(SharedResourceManager& r) : res(r), zk(){}
 ProcessingWorker::~ProcessingWorker(){
     stop_thread = true;
     res.cv_proc.notify_all();
-    if(save_thread.joinable()) process_thread.join();
+    if(process_thread.joinable()) process_thread.join();
 }
 
 void ProcessingWorker::start_worker(){
@@ -70,7 +70,7 @@ zkAppUtils::byteArray ProcessingWorker::compute_hash_sodium(const cv::Mat& frame
     return hash;
 }
 
-zekAppUtils::byteArray* ProcessingWorker::sign_with_zymkey(const cv::Mat& frame, int slot){
+zkAppUtils::byteArray* ProcessingWorker::sign_with_zymkey(const cv::Mat& frame, int slot){
     try{
         zkAppUtils::byteArray digest = compute_hash_sodium(frame);
         if(digest.empty()) return nullptr;
@@ -84,6 +84,8 @@ zekAppUtils::byteArray* ProcessingWorker::sign_with_zymkey(const cv::Mat& frame,
         std::cerr<<"에러 발생"<<e.what()<<std::endl;
         return nullptr;
     }
+
+    return nullptr;
 }
 
 void ProcessingWorker::create_new_key(int slot) {

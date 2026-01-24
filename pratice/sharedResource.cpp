@@ -1,4 +1,4 @@
-#include<sharedResource.hpp>
+#include"sharedResource.hpp"
 
 Slot::Slot() : id(-1){}
 Slot::Slot(int i) : id(id){}

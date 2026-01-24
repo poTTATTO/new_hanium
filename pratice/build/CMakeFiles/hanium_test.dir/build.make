@@ -83,10 +83,24 @@ CMakeFiles/hanium_test.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hanium_test.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cloud9/sangmin/new_hanium/pratice/main.cpp -o CMakeFiles/hanium_test.dir/main.cpp.s
 
+CMakeFiles/hanium_test.dir/sharedResource.cpp.o: CMakeFiles/hanium_test.dir/flags.make
+CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/sharedResource.cpp
+CMakeFiles/hanium_test.dir/sharedResource.cpp.o: CMakeFiles/hanium_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hanium_test.dir/sharedResource.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hanium_test.dir/sharedResource.cpp.o -MF CMakeFiles/hanium_test.dir/sharedResource.cpp.o.d -o CMakeFiles/hanium_test.dir/sharedResource.cpp.o -c /home/cloud9/sangmin/new_hanium/pratice/sharedResource.cpp
+
+CMakeFiles/hanium_test.dir/sharedResource.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hanium_test.dir/sharedResource.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cloud9/sangmin/new_hanium/pratice/sharedResource.cpp > CMakeFiles/hanium_test.dir/sharedResource.cpp.i
+
+CMakeFiles/hanium_test.dir/sharedResource.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hanium_test.dir/sharedResource.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cloud9/sangmin/new_hanium/pratice/sharedResource.cpp -o CMakeFiles/hanium_test.dir/sharedResource.cpp.s
+
 CMakeFiles/hanium_test.dir/save.cpp.o: CMakeFiles/hanium_test.dir/flags.make
 CMakeFiles/hanium_test.dir/save.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/save.cpp
 CMakeFiles/hanium_test.dir/save.cpp.o: CMakeFiles/hanium_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hanium_test.dir/save.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hanium_test.dir/save.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hanium_test.dir/save.cpp.o -MF CMakeFiles/hanium_test.dir/save.cpp.o.d -o CMakeFiles/hanium_test.dir/save.cpp.o -c /home/cloud9/sangmin/new_hanium/pratice/save.cpp
 
 CMakeFiles/hanium_test.dir/save.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/hanium_test.dir/save.cpp.s: cmake_force
 CMakeFiles/hanium_test.dir/capture.cpp.o: CMakeFiles/hanium_test.dir/flags.make
 CMakeFiles/hanium_test.dir/capture.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/capture.cpp
 CMakeFiles/hanium_test.dir/capture.cpp.o: CMakeFiles/hanium_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/hanium_test.dir/capture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/hanium_test.dir/capture.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hanium_test.dir/capture.cpp.o -MF CMakeFiles/hanium_test.dir/capture.cpp.o.d -o CMakeFiles/hanium_test.dir/capture.cpp.o -c /home/cloud9/sangmin/new_hanium/pratice/capture.cpp
 
 CMakeFiles/hanium_test.dir/capture.cpp.i: cmake_force
@@ -111,18 +125,68 @@ CMakeFiles/hanium_test.dir/capture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hanium_test.dir/capture.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cloud9/sangmin/new_hanium/pratice/capture.cpp -o CMakeFiles/hanium_test.dir/capture.cpp.s
 
+CMakeFiles/hanium_test.dir/inference.cpp.o: CMakeFiles/hanium_test.dir/flags.make
+CMakeFiles/hanium_test.dir/inference.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/inference.cpp
+CMakeFiles/hanium_test.dir/inference.cpp.o: CMakeFiles/hanium_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/hanium_test.dir/inference.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hanium_test.dir/inference.cpp.o -MF CMakeFiles/hanium_test.dir/inference.cpp.o.d -o CMakeFiles/hanium_test.dir/inference.cpp.o -c /home/cloud9/sangmin/new_hanium/pratice/inference.cpp
+
+CMakeFiles/hanium_test.dir/inference.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hanium_test.dir/inference.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cloud9/sangmin/new_hanium/pratice/inference.cpp > CMakeFiles/hanium_test.dir/inference.cpp.i
+
+CMakeFiles/hanium_test.dir/inference.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hanium_test.dir/inference.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cloud9/sangmin/new_hanium/pratice/inference.cpp -o CMakeFiles/hanium_test.dir/inference.cpp.s
+
+CMakeFiles/hanium_test.dir/send.cpp.o: CMakeFiles/hanium_test.dir/flags.make
+CMakeFiles/hanium_test.dir/send.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/send.cpp
+CMakeFiles/hanium_test.dir/send.cpp.o: CMakeFiles/hanium_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/hanium_test.dir/send.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hanium_test.dir/send.cpp.o -MF CMakeFiles/hanium_test.dir/send.cpp.o.d -o CMakeFiles/hanium_test.dir/send.cpp.o -c /home/cloud9/sangmin/new_hanium/pratice/send.cpp
+
+CMakeFiles/hanium_test.dir/send.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hanium_test.dir/send.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cloud9/sangmin/new_hanium/pratice/send.cpp > CMakeFiles/hanium_test.dir/send.cpp.i
+
+CMakeFiles/hanium_test.dir/send.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hanium_test.dir/send.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cloud9/sangmin/new_hanium/pratice/send.cpp -o CMakeFiles/hanium_test.dir/send.cpp.s
+
+CMakeFiles/hanium_test.dir/processing.cpp.o: CMakeFiles/hanium_test.dir/flags.make
+CMakeFiles/hanium_test.dir/processing.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/processing.cpp
+CMakeFiles/hanium_test.dir/processing.cpp.o: CMakeFiles/hanium_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/hanium_test.dir/processing.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hanium_test.dir/processing.cpp.o -MF CMakeFiles/hanium_test.dir/processing.cpp.o.d -o CMakeFiles/hanium_test.dir/processing.cpp.o -c /home/cloud9/sangmin/new_hanium/pratice/processing.cpp
+
+CMakeFiles/hanium_test.dir/processing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hanium_test.dir/processing.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cloud9/sangmin/new_hanium/pratice/processing.cpp > CMakeFiles/hanium_test.dir/processing.cpp.i
+
+CMakeFiles/hanium_test.dir/processing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hanium_test.dir/processing.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cloud9/sangmin/new_hanium/pratice/processing.cpp -o CMakeFiles/hanium_test.dir/processing.cpp.s
+
 # Object files for target hanium_test
 hanium_test_OBJECTS = \
 "CMakeFiles/hanium_test.dir/main.cpp.o" \
+"CMakeFiles/hanium_test.dir/sharedResource.cpp.o" \
 "CMakeFiles/hanium_test.dir/save.cpp.o" \
-"CMakeFiles/hanium_test.dir/capture.cpp.o"
+"CMakeFiles/hanium_test.dir/capture.cpp.o" \
+"CMakeFiles/hanium_test.dir/inference.cpp.o" \
+"CMakeFiles/hanium_test.dir/send.cpp.o" \
+"CMakeFiles/hanium_test.dir/processing.cpp.o"
 
 # External object files for target hanium_test
 hanium_test_EXTERNAL_OBJECTS =
 
 hanium_test: CMakeFiles/hanium_test.dir/main.cpp.o
+hanium_test: CMakeFiles/hanium_test.dir/sharedResource.cpp.o
 hanium_test: CMakeFiles/hanium_test.dir/save.cpp.o
 hanium_test: CMakeFiles/hanium_test.dir/capture.cpp.o
+hanium_test: CMakeFiles/hanium_test.dir/inference.cpp.o
+hanium_test: CMakeFiles/hanium_test.dir/send.cpp.o
+hanium_test: CMakeFiles/hanium_test.dir/processing.cpp.o
 hanium_test: CMakeFiles/hanium_test.dir/build.make
 hanium_test: /usr/local/lib/libopencv_gapi.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_stitching.so.4.10.0
@@ -158,6 +222,7 @@ hanium_test: /usr/local/lib/libopencv_wechat_qrcode.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_xfeatures2d.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_xobjdetect.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_xphoto.so.4.10.0
+hanium_test: /usr/lib/libzkAppUtilsClassCPP.so
 hanium_test: /usr/local/lib/libopencv_shape.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_highgui.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_datasets.so.4.10.0
@@ -179,7 +244,7 @@ hanium_test: /usr/local/lib/libopencv_photo.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_imgproc.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_core.so.4.10.0
 hanium_test: CMakeFiles/hanium_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable hanium_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable hanium_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hanium_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

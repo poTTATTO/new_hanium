@@ -224,6 +224,27 @@ HaniumProject_SOURCE_DIR:STATIC=/home/cloud9/sangmin/new_hanium/pratice
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
 
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
+//Path to a library.
+ZK_CPP_LIB:FILEPATH=/usr/lib/libzkAppUtilsClassCPP.so
+
+//Path to a library.
+ZYMKEY_LIB:FILEPATH=/usr/lib/libzk.so
+
+//Path to a library.
+pkgcfg_lib_CURLPP_curl:FILEPATH=/usr/lib/aarch64-linux-gnu/libcurl.so
+
+//Path to a library.
+pkgcfg_lib_CURLPP_curlpp:FILEPATH=/usr/lib/aarch64-linux-gnu/libcurlpp.so
+
+//Path to a library.
+pkgcfg_lib_SODIUM_sodium:FILEPATH=/usr/lib/aarch64-linux-gnu/libsodium.so
+
 
 ########################
 # INTERNAL cache entries
@@ -372,8 +393,95 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+CURLPP_CFLAGS:INTERNAL=-Iinclude;-I/usr/include/aarch64-linux-gnu
+CURLPP_CFLAGS_I:INTERNAL=
+CURLPP_CFLAGS_OTHER:INTERNAL=
+CURLPP_FOUND:INTERNAL=1
+CURLPP_INCLUDEDIR:INTERNAL=include
+CURLPP_INCLUDE_DIRS:INTERNAL=include;/usr/include/aarch64-linux-gnu
+CURLPP_LDFLAGS:INTERNAL=-Llib/aarch64-linux-gnu;-lcurlpp;-Wl,-z,relro;-Wl,-z,now;-L/usr/lib/aarch64-linux-gnu;-lcurl
+CURLPP_LDFLAGS_OTHER:INTERNAL=-Wl,-z,relro;-Wl,-z,now
+CURLPP_LIBDIR:INTERNAL=
+CURLPP_LIBRARIES:INTERNAL=curlpp;curl
+CURLPP_LIBRARY_DIRS:INTERNAL=lib/aarch64-linux-gnu;/usr/lib/aarch64-linux-gnu
+CURLPP_LIBS:INTERNAL=
+CURLPP_LIBS_L:INTERNAL=
+CURLPP_LIBS_OTHER:INTERNAL=
+CURLPP_LIBS_PATHS:INTERNAL=
+CURLPP_MODULE_NAME:INTERNAL=curlpp
+CURLPP_PREFIX:INTERNAL=/usr
+CURLPP_STATIC_CFLAGS:INTERNAL=-Iinclude;-I/usr/include/aarch64-linux-gnu
+CURLPP_STATIC_CFLAGS_I:INTERNAL=
+CURLPP_STATIC_CFLAGS_OTHER:INTERNAL=
+CURLPP_STATIC_INCLUDE_DIRS:INTERNAL=include;/usr/include/aarch64-linux-gnu
+CURLPP_STATIC_LDFLAGS:INTERNAL=-Llib/aarch64-linux-gnu;-lcurlpp;-Wl,-z,relro;-Wl,-z,now;-L/usr/lib/aarch64-linux-gnu;-lcurl;-lnghttp2;-lidn2;-lrtmp;-lssh2;-lssh2;-lpsl;-lssl;-lcrypto;-lssl;-lcrypto;-lgssapi_krb5;-llber;-lldap;-llber;-lzstd;-lbrotlidec;-lz
+CURLPP_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-z,relro;-Wl,-z,now
+CURLPP_STATIC_LIBDIR:INTERNAL=
+CURLPP_STATIC_LIBRARIES:INTERNAL=curlpp;curl;nghttp2;idn2;rtmp;ssh2;ssh2;psl;ssl;crypto;ssl;crypto;gssapi_krb5;lber;ldap;lber;zstd;brotlidec;z
+CURLPP_STATIC_LIBRARY_DIRS:INTERNAL=lib/aarch64-linux-gnu;/usr/lib/aarch64-linux-gnu
+CURLPP_STATIC_LIBS:INTERNAL=
+CURLPP_STATIC_LIBS_L:INTERNAL=
+CURLPP_STATIC_LIBS_OTHER:INTERNAL=
+CURLPP_STATIC_LIBS_PATHS:INTERNAL=
+CURLPP_VERSION:INTERNAL=0.8.1
+CURLPP_curlpp_INCLUDEDIR:INTERNAL=
+CURLPP_curlpp_LIBDIR:INTERNAL=
+CURLPP_curlpp_PREFIX:INTERNAL=
+CURLPP_curlpp_VERSION:INTERNAL=
 //Details about finding OpenCV
 FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr/local][v4.10.0()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v1.8.1()]
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+SODIUM_CFLAGS:INTERNAL=
+SODIUM_CFLAGS_I:INTERNAL=
+SODIUM_CFLAGS_OTHER:INTERNAL=
+SODIUM_FOUND:INTERNAL=1
+SODIUM_INCLUDEDIR:INTERNAL=/usr/include
+SODIUM_INCLUDE_DIRS:INTERNAL=
+SODIUM_LDFLAGS:INTERNAL=-L/usr/lib/aarch64-linux-gnu;-lsodium
+SODIUM_LDFLAGS_OTHER:INTERNAL=
+SODIUM_LIBDIR:INTERNAL=/usr/lib/aarch64-linux-gnu
+SODIUM_LIBRARIES:INTERNAL=sodium
+SODIUM_LIBRARY_DIRS:INTERNAL=/usr/lib/aarch64-linux-gnu
+SODIUM_LIBS:INTERNAL=
+SODIUM_LIBS_L:INTERNAL=
+SODIUM_LIBS_OTHER:INTERNAL=
+SODIUM_LIBS_PATHS:INTERNAL=
+SODIUM_MODULE_NAME:INTERNAL=libsodium
+SODIUM_PREFIX:INTERNAL=/usr
+SODIUM_STATIC_CFLAGS:INTERNAL=
+SODIUM_STATIC_CFLAGS_I:INTERNAL=
+SODIUM_STATIC_CFLAGS_OTHER:INTERNAL=
+SODIUM_STATIC_INCLUDE_DIRS:INTERNAL=
+SODIUM_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/aarch64-linux-gnu;-lsodium;-pthread
+SODIUM_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+SODIUM_STATIC_LIBDIR:INTERNAL=
+SODIUM_STATIC_LIBRARIES:INTERNAL=sodium
+SODIUM_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/aarch64-linux-gnu
+SODIUM_STATIC_LIBS:INTERNAL=
+SODIUM_STATIC_LIBS_L:INTERNAL=
+SODIUM_STATIC_LIBS_OTHER:INTERNAL=
+SODIUM_STATIC_LIBS_PATHS:INTERNAL=
+SODIUM_VERSION:INTERNAL=1.0.18
+SODIUM_libsodium_INCLUDEDIR:INTERNAL=
+SODIUM_libsodium_LIBDIR:INTERNAL=
+SODIUM_libsodium_PREFIX:INTERNAL=
+SODIUM_libsodium_VERSION:INTERNAL=
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
+__pkg_config_arguments_CURLPP:INTERNAL=REQUIRED;curlpp
+__pkg_config_arguments_SODIUM:INTERNAL=REQUIRED;libsodium
+__pkg_config_checked_CURLPP:INTERNAL=1
+__pkg_config_checked_SODIUM:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_CURLPP_curl
+pkgcfg_lib_CURLPP_curl-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_CURLPP_curlpp
+pkgcfg_lib_CURLPP_curlpp-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_SODIUM_sodium
+pkgcfg_lib_SODIUM_sodium-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=
 

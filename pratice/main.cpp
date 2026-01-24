@@ -12,8 +12,11 @@
 #include"sharedResource.hpp"
 #include"save.hpp"
 #include"capture.hpp"
+#include"processing.hpp"
 #include<sodium.h>
-#include<curlpp>
+#include <curlpp/cURLpp.hpp>  // 전역 초기화용
+#include <curlpp/Easy.hpp>     // 실제 전송용 (Easy handle)
+#include <curlpp/Options.hpp>  // URL, PostFields 등 옵션 설정용
 
 void init_dependencies();
 std::atomic<bool> g_running{true};
@@ -34,9 +37,11 @@ int main(){
 
         SaveWorker saver(res);
         CaptureWorker capturer(res);
+        ProcessingWorker processor(res);
 
         saver.start_worker();
         capturer.start_worker();
+        processor.start_worker();
 
         std::cout<<"종료 하려면 Ctrl + C를 누르세요"<<std::endl;
 

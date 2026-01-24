@@ -8,7 +8,7 @@
 #include<thread>
 #include<cerrno>
 #define SIZE 300
-#define TEST_COUNT 1
+#define TEST_COUNT 2
 class CaptureWorker{
 private:    
     SharedResourceManager& res;

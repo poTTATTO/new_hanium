@@ -1,6 +1,5 @@
 #pragma once
 #include"sharedResource.hpp"
-#include<opencv.hpp>
 #include<opencv2/core.hpp>
 #include<opencv2/imgcodecs.hpp>
 #include<opencv2/highgui.hpp>

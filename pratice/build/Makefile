@@ -153,6 +153,30 @@ capture.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/capture.cpp.s
 .PHONY : capture.cpp.s
 
+inference.o: inference.cpp.o
+.PHONY : inference.o
+
+# target to build an object file
+inference.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/inference.cpp.o
+.PHONY : inference.cpp.o
+
+inference.i: inference.cpp.i
+.PHONY : inference.i
+
+# target to preprocess a source file
+inference.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/inference.cpp.i
+.PHONY : inference.cpp.i
+
+inference.s: inference.cpp.s
+.PHONY : inference.s
+
+# target to generate assembly for a file
+inference.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/inference.cpp.s
+.PHONY : inference.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -176,6 +200,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+processing.o: processing.cpp.o
+.PHONY : processing.o
+
+# target to build an object file
+processing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/processing.cpp.o
+.PHONY : processing.cpp.o
+
+processing.i: processing.cpp.i
+.PHONY : processing.i
+
+# target to preprocess a source file
+processing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/processing.cpp.i
+.PHONY : processing.cpp.i
+
+processing.s: processing.cpp.s
+.PHONY : processing.s
+
+# target to generate assembly for a file
+processing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/processing.cpp.s
+.PHONY : processing.cpp.s
 
 save.o: save.cpp.o
 .PHONY : save.o
@@ -201,6 +249,54 @@ save.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/save.cpp.s
 .PHONY : save.cpp.s
 
+send.o: send.cpp.o
+.PHONY : send.o
+
+# target to build an object file
+send.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/send.cpp.o
+.PHONY : send.cpp.o
+
+send.i: send.cpp.i
+.PHONY : send.i
+
+# target to preprocess a source file
+send.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/send.cpp.i
+.PHONY : send.cpp.i
+
+send.s: send.cpp.s
+.PHONY : send.s
+
+# target to generate assembly for a file
+send.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/send.cpp.s
+.PHONY : send.cpp.s
+
+sharedResource.o: sharedResource.cpp.o
+.PHONY : sharedResource.o
+
+# target to build an object file
+sharedResource.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/sharedResource.cpp.o
+.PHONY : sharedResource.cpp.o
+
+sharedResource.i: sharedResource.cpp.i
+.PHONY : sharedResource.i
+
+# target to preprocess a source file
+sharedResource.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/sharedResource.cpp.i
+.PHONY : sharedResource.cpp.i
+
+sharedResource.s: sharedResource.cpp.s
+.PHONY : sharedResource.s
+
+# target to generate assembly for a file
+sharedResource.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hanium_test.dir/build.make CMakeFiles/hanium_test.dir/sharedResource.cpp.s
+.PHONY : sharedResource.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,12 +309,24 @@ help:
 	@echo "... capture.o"
 	@echo "... capture.i"
 	@echo "... capture.s"
+	@echo "... inference.o"
+	@echo "... inference.i"
+	@echo "... inference.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... processing.o"
+	@echo "... processing.i"
+	@echo "... processing.s"
 	@echo "... save.o"
 	@echo "... save.i"
 	@echo "... save.s"
+	@echo "... send.o"
+	@echo "... send.i"
+	@echo "... send.s"
+	@echo "... sharedResource.o"
+	@echo "... sharedResource.i"
+	@echo "... sharedResource.s"
 .PHONY : help
 
 
