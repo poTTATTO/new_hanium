@@ -26,27 +26,11 @@ public:
     zkAppUtils::byteArray signature;
     
 
-    Slot() : id(-1){}
-    Slot(int i) : id(i){}
+    Slot();
+    Slot(int i);
 
-    void mark_done(std::queue<Long>& send_q, std::mutex& mtx, std::condition_variable& cv){
-        if(tasks_left.fetch_sub(1) == 1){
-            {
-                std::lock_guard<std::mutex> lock(mtx);
-                send_q.push(id);
-                clear();
-            }
-            cv.notify_one();
-        }
-    }
-
-    void clear(){
-        is_occupied.store(false);
-        frame_id = -1;
-        is_valid.store(true);
-        frame.release();
-        tasks_left.store(3);
-    }
+    void mark_done(std::queue<Long>& send_q, std::mutex& mtx, std::condition_variable& cv);
+    void clear();
 };
 
 class SharedResourceManager {
@@ -58,30 +42,7 @@ public:
     std::condition_variable cv_inf, cv_save, cv_proc, cv_send;
 
     // Capture 스레드가 호출: 세 개의 큐에 인덱스를 동시에 배분
-    SharedResourceManager(){
-        for(int i=0; i<300; i++){
-            slot_pool[i].id = i;
-        }
-    }
+    SharedResourceManager();
+    void distribute_task(Long idx);
 
-
-    void distribute_task(Long idx) {
-        {
-            std::lock_guard<std::mutex> lock(m_inf);
-            inference_q.push(idx);
-        }
-        cv_inf.notify_one();
-
-        {
-            std::lock_guard<std::mutex> lock(m_save);
-            save_q.push(idx);
-        }
-        cv_save.notify_one();
-
-        {
-            std::lock_guard<std::mutex> lock(m_proc);
-            processing_q.push(idx);
-        }
-        cv_proc.notify_one();
-    }
 };

@@ -11,6 +11,7 @@
 #include<zk_app_utils.h>
 #include<zk_b64.h>
 #define USE_KEY_SLOT 0
+
 class ProcessingWorker{
 private:
     SharedResourceManager& res;

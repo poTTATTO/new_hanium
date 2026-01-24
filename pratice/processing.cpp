@@ -1,4 +1,4 @@
-#include<processing.hpp>
+#include"processing.hpp"
 
 ProcessingWorker::ProcessingWorker(SharedResourceManager& r) : res(r), zk(){}
 
@@ -47,7 +47,6 @@ void ProcessingWorker::do_process(Long idx){
 
 
 zkAppUtils::byteArray ProcessingWorker::compute_hash_sodium(const cv::Mat& frame){
-    if(sodium_init() < 0) throw std::runtime_error("Sodium init failed");
 
     cv::Mat gray;
     if(frame.channels() > 1){

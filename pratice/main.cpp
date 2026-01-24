@@ -12,7 +12,10 @@
 #include"sharedResource.hpp"
 #include"save.hpp"
 #include"capture.hpp"
+#include<sodium.h>
+#include<curlpp>
 
+void init_dependencies();
 std::atomic<bool> g_running{true};
 
 void signal_handler(int signal){
@@ -25,6 +28,8 @@ int main(){
    std::signal(SIGINT, signal_handler);
 
    try{
+
+        void init_dependencies();
         SharedResourceManager res;
 
         SaveWorker saver(res);
@@ -49,3 +54,14 @@ int main(){
     return 0;
 
 }
+
+
+
+void init_dependencies(){
+    if(sodium_init()<0){
+        throw std::runtime_error("Sodium init failed");
+    }
+    curlpp::initialize();
+    std::cout<<"library(sodium, curlpp) init complete"<<std::endl;
+}
+
