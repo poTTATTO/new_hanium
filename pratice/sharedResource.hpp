@@ -8,6 +8,10 @@
 #include<opencv2/imgcodecs.hpp>
 #include<opencv2/highgui.hpp>
 #include<opencv2/opencv.hpp>
+#include<vector>
+#include<zymkey/zkAppUtilsClass.h>
+#include<zk_app_utils.h>
+#include<zk_b64.h>
 
 typedef long long Long;
 
@@ -19,7 +23,7 @@ public:
     std::atomic<bool> is_occupied{false};
     std::atomic<bool> is_valid{true};
     cv::Mat frame;
-
+    zkAppUtils::byteArray signature;
     
 
     Slot() : id(-1){}

@@ -31,7 +31,7 @@ void SaveWorker::do_save(Long idx){
     Slot& slot = res.slot_pool[idx];
     if(slot.is_valid){
         std::cout<<"[Save] Processing Slot : "<< idx<<std::endl;
-        std::string save_path = "/home/babamba/dev/lab/my_hanium/photo/ID_" + std::to_string(slot.frame_id) + ".jpg";
+        std::string save_path = "/home/cloud9/sangmin/new_hanium/photo/ID_" + std::to_string(slot.frame_id) + ".jpg";
         if(!cv::imwrite(save_path, slot.frame)){
             slot.is_valid = false;
             std::cout<<"["<<slot.frame_id<<"]"<<"저장 실패"<<std::endl;

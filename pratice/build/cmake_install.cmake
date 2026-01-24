@@ -1,4 +1,4 @@
-# Install script for directory: /home/babamba/dev/lab/my_hanium/pratice
+# Install script for directory: /home/cloud9/sangmin/new_hanium/pratice
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/babamba/dev/lab/my_hanium/pratice/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/cloud9/sangmin/new_hanium/pratice/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
