@@ -5,7 +5,7 @@ ProcessingWorker::ProcessingWorker(SharedResourceManager& r) : res(r), //zk()
     secret_key(crypto_sign_SECRETKEYBYTES)
     
     {
-    if(sign_keypair(secret_key.data(), public_key.data()) == -1){
+    if(sign_keypair(public_key.data(), secret_key.data()) == -1){
         throw std::runtime_error("Sodium 초기화 실패로 생성 불가");
     }
 

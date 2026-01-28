@@ -9,7 +9,8 @@
 #include<cerrno>
 #include<atomic>
 
-#define TEST_COUNT 2
+#define TEST_COUNT 3
+
 class CaptureWorker{
 private:    
     SharedResourceManager& res;
@@ -18,7 +19,6 @@ private:
 
 public:
     cv::VideoCapture cap;
-    cv::Mat frame;
     std::atomic<Long> frame_id;
 
     CaptureWorker(SharedResourceManager& r);
@@ -26,5 +26,5 @@ public:
     void start_worker();
     void capture_task();
     void do_capture();
-    void slot_init(Long idx);
+    void slot_init(Long idx, cv::Mat& frame);
 };

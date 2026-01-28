@@ -5,6 +5,12 @@
 #include <string>
 #include <algorithm>
 #include <cmath>
+struct Detection{
+    int cls;
+    float prob;
+    std::vector<int>bbox;
+};
+
 
 const std::vector<std::string> COCO_LABELS = { "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard", "surfboard", "tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch", "potted plant", "bed", "dining table", "toilet", "tv", "laptop", "mouse", "remote", "keyboard", "cell phone", "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush" };
 
@@ -54,44 +60,83 @@ int main() {
 
 // 5. [교정] 5-Stride 기반 전수 조사 파싱
 // 5. [최종 확정] 순차적 클래스 파싱 로직
-float* results = output_data.data();
-int current_ptr = 0; // 버퍼를 읽어 나갈 포인터
 
-std::cout << "\n--- [검출 성공] 올바른 객체 ID 매칭 시작 ---" << std::endl;
+// float* results = output_data.data();
+// int current_ptr = 0; // 버퍼를 읽어 나갈 포인터
 
-for (int cls = 0; cls < 80; ++cls) {
-    // 1. 현재 위치의 값은 해당 클래스의 '검출 개수'입니다.
-    int count = static_cast<int>(results[current_ptr]);
-    current_ptr++; // 개수 다음 칸으로 이동
+// std::cout << "\n--- [검출 성공] 올바른 객체 ID 매칭 시작 ---" << std::endl;
 
-    for (int i = 0; i < count; ++i) {
-        // 2. 검출 개수가 있을 때만 5개의 데이터(y1, x1, y2, x2, score)를 읽습니다.
-        float y1_f = results[current_ptr + 0];
-        float x1_f = results[current_ptr + 1];
-        float y2_f = results[current_ptr + 2];
-        float x2_f = results[current_ptr + 3];
-        float score = results[current_ptr + 4];
+// for (int cls = 0; cls < 80; ++cls) {
+//     // 1. 현재 위치의 값은 해당 클래스의 '검출 개수'입니다.
+//     int count = static_cast<int>(results[current_ptr]);
+//     current_ptr++; // 개수 다음 칸으로 이동
 
-        if (score >= 0.4f) {
-            std::string label = COCO_LABELS[cls]; // 현재 루프의 cls가 진짜 ID입니다!
+//     for (int i = 0; i < count; ++i) {
+//         // 2. 검출 개수가 있을 때만 5개의 데이터(y1, x1, y2, x2, score)를 읽습니다.
+//         float y1_f = results[current_ptr + 0];
+//         float x1_f = results[current_ptr + 1];
+//         float y2_f = results[current_ptr + 2];
+//         float x2_f = results[current_ptr + 3];
+//         float score = results[current_ptr + 4];
 
-            int x1 = std::clamp((int)(x1_f * original_img.cols), 0, original_img.cols);
-            int y1 = std::clamp((int)(y1_f * original_img.rows), 0, original_img.rows);
-            int x2 = std::clamp((int)(x2_f * original_img.cols), 0, original_img.cols);
-            int y2 = std::clamp((int)(y2_f * original_img.rows), 0, original_img.rows);
+//         if (score >= 0.4f) {
+//             std::string label = COCO_LABELS[cls]; // 현재 루프의 cls가 진짜 ID입니다!
 
-            std::cout << "[" << label << "] " << (int)(score * 100) << "% 발견!" << std::endl;
+//             int x1 = std::clamp((int)(x1_f * original_img.cols), 0, original_img.cols);
+//             int y1 = std::clamp((int)(y1_f * original_img.rows), 0, original_img.rows);
+//             int x2 = std::clamp((int)(x2_f * original_img.cols), 0, original_img.cols);
+//             int y2 = std::clamp((int)(y2_f * original_img.rows), 0, original_img.rows);
 
-            // 시각화
-            cv::rectangle(original_img, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 2);
-            cv::putText(original_img, label, cv::Point(x1, y1 - 5), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 255, 0), 1);
+//             std::cout << "[" << label << "] " << (int)(score * 100) << "% 발견!" << std::endl;
+
+//             // 시각화
+//             cv::rectangle(original_img, cv::Point(x1, y1), cv::Point(x2, y2), cv::Scalar(0, 255, 0), 2);
+//             cv::putText(original_img, label, cv::Point(x1, y1 - 5), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 255, 0), 1);
+//         }
+//         current_ptr += 5; // 다음 객체로 이동
+//     }
+    
+//     // 검출 개수가 0인 클래스라도 포인터는 이미 current_ptr++로 인해 다음 클래스 개수 칸을 가리킵니다.
+// }
+// cv::imwrite("real_final_result.jpg", original_img);
+    
+    std::vector<Detection> detections;
+    float* results = output_data.data();
+    int current_ptr = 0;
+
+    for (int cls = 0; cls < 80; ++cls) {
+        int count = static_cast<int>(results[current_ptr++]);
+        for (int i = 0; i < count; ++i) {
+            float* det = &results[current_ptr];
+            float score = det[4];
+
+            if (score >= 0.45f) {
+                Detection d;
+                d.cls = cls;
+                d.prob = score;
+                // [x1, y1, x2, y2] 순서로 저장
+                d.bbox = { (int)(det[1] * 640), (int)(det[0] * 640), 
+                           (int)(det[3] * 640), (int)(det[2] * 640) };
+                detections.push_back(d);
+            }
+            current_ptr += 5;
         }
-        current_ptr += 5; // 다음 객체로 이동
     }
-    
-    // 검출 개수가 0인 클래스라도 포인터는 이미 current_ptr++로 인해 다음 클래스 개수 칸을 가리킵니다.
-}
-cv::imwrite("real_final_result.jpg", original_img);
-    
+
+    if (detections.empty()) {
+        std::cout << "탐지된 객체가 없습니다. ㅋ" << std::endl;
+    } else {
+        std::cout << "--- 탐지 결과 (" << detections.size() << "건) ---" << std::endl;
+        
+        for (const auto& det : detections) {
+            std::cout << "[Class]: " << det.cls 
+                    << " [Prob]: " << det.prob 
+                    << " [BBox]: [" << det.bbox[0] << ", " << det.bbox[1] << ", " 
+                    << det.bbox[2] << ", " << det.bbox[3] << "]" << std::endl;
+        }
+        std::cout << "---------------------------" << std::endl;
+    }
+
     return 0;
 }
+

@@ -6,7 +6,7 @@ CaptureWorker::CaptureWorker(SharedResourceManager& r) : res(r) , cap(0, cv::CAP
     }
 
     cap.set(cv::CAP_PROP_FRAME_WIDTH,640);
-    cap.set(cv::CAP_PROP_FRAME_HEIGHT, 480);
+    cap.set(cv::CAP_PROP_FRAME_HEIGHT, 640);
     cap.set(cv::CAP_PROP_FPS, 30); 
 }
 
@@ -18,8 +18,8 @@ void CaptureWorker::capture_task(){
     pthread_setname_np(pthread_self(),"Capture_Thread");
 
     while(true){
-        
-        do_capture();
+        cv::Mat frame;
+        cap >> frame;
 
         if(frame.empty()){
             std::cerr<<"프레임이 비었습니다."<<std::endl;
@@ -33,22 +33,31 @@ void CaptureWorker::capture_task(){
             continue;
         }
         
-        slot_init(idx);
+        slot_init(idx, frame);
         res.distribute_task_to_save(idx);
         res.distribute_task_to_proc(idx);
+        res.distribute_task_to_inf(idx);
     }
 }
 
 void CaptureWorker::do_capture(){
-       cap>>frame;
-
 }
 
-void CaptureWorker::slot_init(Long idx){
+void CaptureWorker::slot_init(Long idx, cv::Mat& frame){
         Slot& slot = res.slot_pool[idx];
         slot.frame_id.store(frame_id);
         slot.tasks_left.store(TEST_COUNT);
-        slot.frame = std::move(frame);
+        if(!frame.isContinuous()){
+            frame = frame.clone();
+        }
+        if(frame.cols != 640 || frame.rows != 640){
+            cv::Mat canvas = cv::Mat::zeros(640, 640, frame.type());
+            frame.copyTo(canvas(cv::Rect(0, 0, frame.cols, std::min(frame.rows, 640))));
+            slot.frame = std::move(canvas);
+        }else{
+            slot.frame = std::move(frame);
+        }
+        
         slot.is_valid.store(true);
         slot.is_occupied.store(true);
 }

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(HaniumProject)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(OpenCV REQUIRED)
 
@@ -10,6 +12,9 @@ pkg_check_modules(CURLPP REQUIRED curlpp)
 
 find_library(ZYMKEY_LIB zk REQUIRED)
 find_library(ZK_CPP_LIB zkAppUtilsClassCPP REQUIRED)
+
+set(HAILORT_LIB "/usr/lib/libhailort.so")
+set(HAILORT_INCLUDE "/usr/include/hailort")
 
 add_executable(hanium_test 
     main.cpp 
@@ -36,6 +41,6 @@ target_link_libraries(hanium_test
     ${CURLPP_LIBRARIES}
     ${ZK_LIB}
     ${ZK_CPP_LIB}
-    
+    ${HAILORT_LIB}
 )
 

@@ -223,6 +223,7 @@ hanium_test: /usr/local/lib/libopencv_xfeatures2d.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_xobjdetect.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_xphoto.so.4.10.0
 hanium_test: /usr/lib/libzkAppUtilsClassCPP.so
+hanium_test: /usr/lib/libhailort.so
 hanium_test: /usr/local/lib/libopencv_shape.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_highgui.so.4.10.0
 hanium_test: /usr/local/lib/libopencv_datasets.so.4.10.0

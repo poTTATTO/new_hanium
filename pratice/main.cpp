@@ -13,6 +13,7 @@
 #include"save.hpp"
 #include"capture.hpp"
 #include"processing.hpp"
+#include"inference.hpp"
 #include<sodium.h>
 #include <curlpp/cURLpp.hpp>  // 전역 초기화용
 #include <curlpp/Easy.hpp>     // 실제 전송용 (Easy handle)
@@ -33,13 +34,14 @@ int main(){
 //    auto start_time = std::chrono::steady_clock::now();
 
 //    while(std::chrono::steady_clock::now() - start_time < std::chrono::seconds(20)){
-
+    std::string hef_path = "/home/cloud9/sangmin/new_hanium/pratice/yolov8s.hef";
     init_dependencies();
     SharedResourceManager res;
 
     CaptureWorker capturer(res);
     SaveWorker saver(res);
     ProcessingWorker processor(res);
+    InferenceWorker inferer(res, hef_path);
     
 
 
@@ -49,6 +51,7 @@ int main(){
     capturer.start_worker();
     saver.start_worker();
     processor.start_worker();
+    inferer.start_worker();
 
     std::cout<<"종료 하려면 Ctrl + C를 누르세요"<<std::endl;
 

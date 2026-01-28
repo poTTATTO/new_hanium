@@ -27,7 +27,7 @@ public:
     void start_worker();
     void process_task();
     void do_process(Long idx);
-    int sign_keypair(unsigned char* secret_key,unsigned char* public_key);
+    int sign_keypair(unsigned char* public_key,unsigned char* secret_key);
     std::vector<unsigned char> sign_frame_libsodium(const cv::Mat& frame, const unsigned char* secret_key); 
     // zkAppUtils::byteArray compute_hash_sodium(const cv::Mat& frame);
     // zkAppUtils::byteArray* sign_with_zymkey(const cv::Mat& frame, int slot);

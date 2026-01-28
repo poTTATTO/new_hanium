@@ -13,9 +13,14 @@
 #include<zk_app_utils.h>
 #include<zk_b64.h>
 #include<new>
-#define SLOT_POOL_SIZE 2000 
+#define SLOT_POOL_SIZE 1500
 typedef long long Long;
 
+struct Detection{
+    int cls;
+    float prob;
+    std::vector<int> bbox;
+};
 
 class Slot{
 public:
@@ -27,6 +32,7 @@ public:
     alignas(std::hardware_destructive_interference_size) std::atomic<bool> is_valid{true};
     cv::Mat frame;
     std::vector<unsigned char> signature;
+    std::vector<Detection> detection;
     // zkAppUtils::byteArray signature;
     
 

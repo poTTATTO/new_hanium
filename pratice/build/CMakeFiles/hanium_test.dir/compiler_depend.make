@@ -873,7 +873,64 @@ CMakeFiles/hanium_test.dir/inference.cpp.o: /home/cloud9/sangmin/new_hanium/prat
   /usr/include/zymkey/zk_b64.h \
   /usr/include/c++/12/thread \
   /usr/include/c++/12/bits/std_thread.h \
-  /usr/include/c++/12/bits/this_thread_sleep.h
+  /usr/include/c++/12/bits/this_thread_sleep.h \
+  /usr/include/hailo/hailort.hpp \
+  /usr/include/hailo/hailort.h \
+  /usr/include/hailo/platform.h \
+  /usr/include/unistd.h \
+  /usr/include/aarch64-linux-gnu/bits/posix_opt.h \
+  /usr/include/aarch64-linux-gnu/bits/environments.h \
+  /usr/include/aarch64-linux-gnu/bits/confname.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_core.h \
+  /usr/include/aarch64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  /usr/include/aarch64-linux-gnu/sys/time.h \
+  /usr/include/aarch64-linux-gnu/sys/socket.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
+  /usr/include/aarch64-linux-gnu/bits/socket.h \
+  /usr/include/aarch64-linux-gnu/bits/socket_type.h \
+  /usr/include/aarch64-linux-gnu/bits/sockaddr.h \
+  /usr/lib/linux/uapi/arm64/asm/socket.h \
+  /usr/include/asm-generic/socket.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
+  /usr/lib/linux/uapi/arm64/asm/posix_types.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/lib/linux/uapi/arm64/asm/bitsperlong.h \
+  /usr/include/asm-generic/bitsperlong.h \
+  /usr/lib/linux/uapi/arm64/asm/sockios.h \
+  /usr/include/asm-generic/sockios.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_osockaddr.h \
+  /usr/include/netinet/in.h \
+  /usr/include/aarch64-linux-gnu/bits/in.h \
+  /usr/include/arpa/inet.h \
+  /usr/include/aarch64-linux-gnu/sys/un.h \
+  /usr/include/hailo/hailort_common.hpp \
+  /usr/include/hailo/expected.hpp \
+  /usr/include/hailo/buffer.hpp \
+  /usr/include/c++/12/cassert \
+  /usr/include/hailo/hef.hpp \
+  /usr/include/hailo/device.hpp \
+  /usr/include/hailo/network_group.hpp \
+  /usr/include/hailo/stream.hpp \
+  /usr/include/hailo/event.hpp \
+  /usr/include/poll.h \
+  /usr/include/aarch64-linux-gnu/sys/poll.h \
+  /usr/include/aarch64-linux-gnu/bits/poll.h \
+  /usr/include/hailo/runtime_statistics.hpp \
+  /usr/include/hailo/vdevice.hpp \
+  /usr/include/hailo/vstream.hpp \
+  /usr/include/hailo/inference_pipeline.hpp \
+  /usr/include/hailo/infer_model.hpp \
+  /usr/include/hailo/transform.hpp \
+  /usr/include/hailo/network_rate_calculator.hpp \
+  /usr/include/hailo/quantization.hpp \
+  /usr/include/c++/12/fenv.h \
+  /usr/include/fenv.h \
+  /usr/include/aarch64-linux-gnu/bits/fenv.h \
+  /usr/include/hailo/hailort_defaults.hpp \
+  /usr/include/hailo/dma_mapped_buffer.hpp
 
 CMakeFiles/hanium_test.dir/main.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/main.cpp \
   /usr/include/stdc-predef.h \
@@ -1455,10 +1512,10 @@ CMakeFiles/hanium_test.dir/main.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/m
   /usr/include/sodium/crypto_stream_salsa2012.h \
   /usr/include/sodium/crypto_stream_salsa208.h \
   /usr/include/sodium/crypto_stream_xchacha20.h \
-  /usr/include/curlpp/cURLpp.hpp \
-  /usr/include/aarch64-linux-gnu/curl/curl.h \
-  /usr/include/aarch64-linux-gnu/curl/curlver.h \
-  /usr/include/aarch64-linux-gnu/curl/system.h \
+  /home/cloud9/sangmin/new_hanium/pratice/inference.hpp \
+  /usr/include/hailo/hailort.hpp \
+  /usr/include/hailo/hailort.h \
+  /usr/include/hailo/platform.h \
   /usr/include/aarch64-linux-gnu/sys/socket.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
   /usr/include/aarch64-linux-gnu/bits/socket.h \
@@ -1469,6 +1526,39 @@ CMakeFiles/hanium_test.dir/main.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/m
   /usr/lib/linux/uapi/arm64/asm/sockios.h \
   /usr/include/asm-generic/sockios.h \
   /usr/include/aarch64-linux-gnu/bits/types/struct_osockaddr.h \
+  /usr/include/netinet/in.h \
+  /usr/include/aarch64-linux-gnu/bits/in.h \
+  /usr/include/arpa/inet.h \
+  /usr/include/aarch64-linux-gnu/sys/un.h \
+  /usr/include/hailo/hailort_common.hpp \
+  /usr/include/hailo/expected.hpp \
+  /usr/include/hailo/buffer.hpp \
+  /usr/include/c++/12/cassert \
+  /usr/include/hailo/hef.hpp \
+  /usr/include/hailo/device.hpp \
+  /usr/include/hailo/network_group.hpp \
+  /usr/include/hailo/stream.hpp \
+  /usr/include/hailo/event.hpp \
+  /usr/include/poll.h \
+  /usr/include/aarch64-linux-gnu/sys/poll.h \
+  /usr/include/aarch64-linux-gnu/bits/poll.h \
+  /usr/include/hailo/runtime_statistics.hpp \
+  /usr/include/hailo/vdevice.hpp \
+  /usr/include/hailo/vstream.hpp \
+  /usr/include/hailo/inference_pipeline.hpp \
+  /usr/include/hailo/infer_model.hpp \
+  /usr/include/hailo/transform.hpp \
+  /usr/include/hailo/network_rate_calculator.hpp \
+  /usr/include/hailo/quantization.hpp \
+  /usr/include/c++/12/fenv.h \
+  /usr/include/fenv.h \
+  /usr/include/aarch64-linux-gnu/bits/fenv.h \
+  /usr/include/hailo/hailort_defaults.hpp \
+  /usr/include/hailo/dma_mapped_buffer.hpp \
+  /usr/include/curlpp/cURLpp.hpp \
+  /usr/include/aarch64-linux-gnu/curl/curl.h \
+  /usr/include/aarch64-linux-gnu/curl/curlver.h \
+  /usr/include/aarch64-linux-gnu/curl/system.h \
   /usr/include/aarch64-linux-gnu/curl/easy.h \
   /usr/include/aarch64-linux-gnu/curl/multi.h \
   /usr/include/aarch64-linux-gnu/curl/curl.h \
@@ -1489,7 +1579,6 @@ CMakeFiles/hanium_test.dir/main.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/m
   /usr/include/curlpp/internal/SList.hpp \
   /usr/include/curlpp/Form.hpp \
   /usr/include/utilspp/clone_ptr.hpp \
-  /usr/include/c++/12/cassert \
   /usr/include/curlpp/internal/OptionContainer.inl \
   /usr/include/curlpp/OptionBase.hpp \
   /usr/include/curlpp/Option.inl \
@@ -3414,26 +3503,6 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/curl/multi.h:
 
-/usr/include/aarch64-linux-gnu/bits/types/struct_osockaddr.h:
-
-/usr/include/asm-generic/sockios.h:
-
-/usr/lib/linux/uapi/arm64/asm/sockios.h:
-
-/usr/lib/linux/uapi/arm64/asm/socket.h:
-
-/usr/include/aarch64-linux-gnu/bits/sockaddr.h:
-
-/usr/include/aarch64-linux-gnu/curl/easy.h:
-
-/usr/include/aarch64-linux-gnu/bits/socket_type.h:
-
-/usr/include/aarch64-linux-gnu/bits/socket.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h:
-
-/usr/include/aarch64-linux-gnu/sys/socket.h:
-
 /usr/include/aarch64-linux-gnu/curl/curl.h:
 
 /usr/include/curlpp/cURLpp.hpp:
@@ -3458,9 +3527,47 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/sodium/crypto_verify_32.h:
 
-/usr/include/asm-generic/socket.h:
+/usr/include/sodium/crypto_verify_16.h:
 
-/usr/local/include/opencv4/opencv2/core/mat.hpp:
+/usr/include/sodium/crypto_sign_ed25519.h:
+
+/usr/include/sodium/crypto_sign.h:
+
+/usr/include/sodium/crypto_shorthash_siphash24.h:
+
+/usr/include/sodium/crypto_secretstream_xchacha20poly1305.h:
+
+/usr/include/sodium/crypto_secretbox.h:
+
+/usr/include/sodium/crypto_scalarmult.h:
+
+/usr/include/sodium/crypto_pwhash_argon2id.h:
+
+/usr/include/sodium/crypto_pwhash_argon2i.h:
+
+/usr/include/sodium/crypto_onetimeauth.h:
+
+/usr/include/sodium/crypto_hash.h:
+
+/usr/include/sodium/crypto_generichash_blake2b.h:
+
+/usr/include/sodium/crypto_core_salsa208.h:
+
+/usr/include/sodium/crypto_core_salsa20.h:
+
+/usr/include/sodium/crypto_core_hchacha20.h:
+
+/usr/include/sodium/crypto_box_curve25519xsalsa20poly1305.h:
+
+/usr/include/sodium/crypto_auth_hmacsha512.h:
+
+/usr/include/sodium/crypto_auth.h:
+
+/usr/include/sodium/crypto_aead_chacha20poly1305.h:
+
+/usr/include/sodium/crypto_aead_aes256gcm.h:
+
+/usr/include/sodium/core.h:
 
 /usr/local/include/opencv4/opencv2/flann/lsh_index.h:
 
@@ -3476,6 +3583,10 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/core/vsx_utils.hpp:
 
+/usr/include/sodium/crypto_stream_chacha20.h:
+
+/usr/include/c++/12/bits/stl_tree.h:
+
 /usr/include/c++/12/bits/atomic_lockfree_defines.h:
 
 /usr/include/aarch64-linux-gnu/bits/uio_lim.h:
@@ -3490,6 +3601,10 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/bits/locale_facets.h:
 
+/usr/include/sodium/crypto_onetimeauth_poly1305.h:
+
+/usr/local/include/opencv4/opencv2/core/ovx.hpp:
+
 /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
 
 /usr/local/include/opencv4/opencv2/objdetect/aruco_dictionary.hpp:
@@ -3500,23 +3615,25 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/backward/auto_ptr.h:
 
-/usr/include/wctype.h:
+/usr/include/sodium/crypto_pwhash.h:
 
 /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h:
 
-/usr/include/sodium/crypto_pwhash.h:
+/usr/include/wctype.h:
 
 /usr/include/c++/12/bit:
 
 /usr/include/c++/12/bits/stl_raw_storage_iter.h:
+
+/usr/include/sodium/crypto_auth_hmacsha256.h:
+
+/usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp:
 
 /usr/include/c++/12/tr1/poly_laguerre.tcc:
 
 /usr/local/include/opencv4/opencv2/core/check.hpp:
 
 /usr/local/include/opencv4/opencv2/opencv.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cuda.hpp:
 
 /usr/include/c++/12/tr1/modified_bessel_func.tcc:
 
@@ -3554,13 +3671,15 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/bits/types/wint_t.h:
 
-/usr/include/sodium/crypto_verify_16.h:
-
 /usr/include/c++/12/tr1/gamma.tcc:
 
 /usr/include/aarch64-linux-gnu/curl/system.h:
 
 /usr/include/linux/stat.h:
+
+/usr/include/sodium/crypto_stream_xsalsa20.h:
+
+/usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
 /usr/local/include/opencv4/opencv2/video.hpp:
 
@@ -3582,7 +3701,7 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/errno.h:
 
-/usr/include/sodium/crypto_auth_hmacsha512.h:
+/usr/include/hailo/vdevice.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h:
 
@@ -3594,11 +3713,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/linux/types.h:
 
-/usr/include/sodium/crypto_core_salsa208.h:
-
 /usr/include/time.h:
 
 /usr/include/c++/12/backward/binders.h:
+
+/usr/include/hailo/hef.hpp:
 
 /usr/local/include/opencv4/opencv2/core/cvstd.hpp:
 
@@ -3608,11 +3727,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/iosfwd:
 
-/usr/include/sodium/version.h:
-
 /usr/include/aarch64-linux-gnu/bits/locale.h:
 
-/usr/include/sodium/crypto_auth.h:
+/usr/local/include/opencv4/opencv2/core/cuda.hpp:
+
+/usr/include/hailo/event.hpp:
 
 /usr/include/c++/12/clocale:
 
@@ -3694,13 +3813,15 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/bits/predefined_ops.h:
 
+/usr/include/sodium/crypto_shorthash.h:
+
+/usr/include/aarch64-linux-gnu/c++/12/bits/atomic_word.h:
+
 /usr/include/c++/12/typeinfo:
 
 /usr/include/aarch64-linux-gnu/bits/byteswap.h:
 
 /usr/include/c++/12/math.h:
-
-/usr/lib/linux/uapi/arm64/asm/bitsperlong.h:
 
 /usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h:
 
@@ -3718,9 +3839,9 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/deque:
 
-/usr/include/asm-generic/types.h:
-
 /usr/include/asm-generic/bitsperlong.h:
+
+/usr/include/asm-generic/types.h:
 
 /usr/include/c++/12/bits/stl_vector.h:
 
@@ -3735,6 +3856,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/local/include/opencv4/opencv2/objdetect/aruco_detector.hpp:
 
 /usr/include/c++/12/limits:
+
+/usr/include/aarch64-linux-gnu/bits/poll.h:
 
 /usr/include/aarch64-linux-gnu/sys/select.h:
 
@@ -3780,8 +3903,6 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/bits/stl_iterator_base_funcs.h:
 
-/usr/include/pthread.h:
-
 /usr/include/c++/12/cmath:
 
 /usr/include/features.h:
@@ -3820,9 +3941,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/core/cvdef.h:
 
-/usr/include/aarch64-linux-gnu/bits/setjmp.h:
+/usr/include/sodium/version.h:
 
-/usr/include/sodium/crypto_secretstream_xchacha20poly1305.h:
+/usr/include/poll.h:
+
+/usr/include/aarch64-linux-gnu/bits/setjmp.h:
 
 /usr/include/aarch64-linux-gnu/bits/types.h:
 
@@ -3838,13 +3961,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp:
 
-/usr/include/c++/12/bits/stl_relops.h:
-
 /usr/include/c++/12/cstdint:
 
-/usr/lib/linux/uapi/arm64/asm/errno.h:
-
 /usr/include/sodium/crypto_hash_sha256.h:
+
+/usr/lib/linux/uapi/arm64/asm/errno.h:
 
 /usr/include/c++/12/climits:
 
@@ -3888,17 +4009,23 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/bits/ptr_traits.h:
 
+/usr/include/sodium/crypto_stream.h:
+
+/usr/include/sodium/crypto_hash_sha512.h:
+
+/usr/include/c++/12/bits/uniform_int_dist.h:
+
 /usr/include/stdio.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h:
 
 /usr/include/aarch64-linux-gnu/bits/mathcalls-narrow.h:
 
+/usr/include/hailo/hailort_defaults.hpp:
+
 /usr/local/include/opencv4/opencv2/flann/kmeans_index.h:
 
 /usr/include/c++/12/bits/algorithmfwd.h:
-
-/usr/include/sodium/crypto_aead_xchacha20poly1305.h:
 
 /usr/include/c++/12/tr1/bessel_function.tcc:
 
@@ -3916,7 +4043,15 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/bits/locale_conv.h:
 
+/usr/include/sodium/crypto_core_hsalsa20.h:
+
+/usr/include/aarch64-linux-gnu/bits/xopen_lim.h:
+
 /usr/include/string.h:
+
+/usr/include/sodium/crypto_kdf.h:
+
+/usr/include/c++/12/bits/concept_check.h:
 
 /usr/lib/gcc/aarch64-linux-gnu/12/include/float.h:
 
@@ -3927,6 +4062,10 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/c++/12/cstdlib:
 
 /usr/include/c++/12/bits/stringfwd.h:
+
+/usr/include/aarch64-linux-gnu/curl/easy.h:
+
+/usr/include/aarch64-linux-gnu/bits/socket_type.h:
 
 /usr/include/aarch64-linux-gnu/bits/floatn-common.h:
 
@@ -3978,21 +4117,21 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h:
 
-/usr/include/sodium/crypto_shorthash_siphash24.h:
-
 /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h:
 
 /usr/include/aarch64-linux-gnu/bits/floatn.h:
 
 /usr/include/aarch64-linux-gnu/bits/mathcalls.h:
 
-/usr/include/sodium/export.h:
-
 /usr/include/aarch64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/aarch64-linux-gnu/bits/waitstatus.h:
 
 /usr/local/include/opencv4/opencv2/core/version.hpp:
+
+/usr/include/sodium/crypto_auth_hmacsha512256.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h:
 
 /usr/include/c++/12/bits/stl_construct.h:
 
@@ -4048,6 +4187,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/bits/atomic_base.h:
 
+/usr/include/arpa/inet.h:
+
 /home/cloud9/sangmin/new_hanium/pratice/capture.cpp:
 
 /usr/local/include/opencv4/opencv2/core/bufferpool.hpp:
@@ -4057,8 +4198,6 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/wchar.h:
 
 /usr/include/c++/12/array:
-
-/usr/include/aarch64-linux-gnu/bits/types/stack_t.h:
 
 /usr/include/aarch64-linux-gnu/sys/procfs.h:
 
@@ -4100,8 +4239,6 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/system_error:
 
-/usr/include/sodium/crypto_onetimeauth.h:
-
 /usr/include/c++/12/stdexcept:
 
 /usr/include/c++/12/bits/stl_bvector.h:
@@ -4134,21 +4271,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/stitching/detail/util_inl.hpp:
 
-/usr/include/c++/12/bits/stl_tree.h:
-
-/usr/include/sodium/crypto_stream_chacha20.h:
-
-/usr/local/include/opencv4/opencv2/core/utility.hpp:
-
 /usr/include/aarch64-linux-gnu/bits/types/error_t.h:
 
 /usr/include/c++/12/bits/deque.tcc:
 
 /usr/include/c++/12/functional:
-
-/usr/include/sodium/crypto_box_curve25519xsalsa20poly1305.h:
-
-/usr/include/sodium/crypto_scalarmult.h:
 
 /usr/include/aarch64-linux-gnu/curl/websockets.h:
 
@@ -4172,7 +4299,15 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/bits/erase_if.h:
 
+/usr/lib/linux/uapi/arm64/asm/socket.h:
+
 /usr/include/c++/12/mutex:
+
+/usr/include/asm-generic/sockios.h:
+
+/usr/include/sodium/crypto_generichash.h:
+
+/usr/include/c++/12/ratio:
 
 /usr/include/aarch64-linux-gnu/bits/struct_mutex.h:
 
@@ -4210,6 +4345,10 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/core/async.hpp:
 
+/usr/lib/linux/uapi/arm64/asm/bitsperlong.h:
+
+/usr/include/hailo/network_rate_calculator.hpp:
+
 /usr/include/c++/12/chrono:
 
 /usr/local/include/opencv4/opencv2/dnn/version.hpp:
@@ -4244,15 +4383,7 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/flann/any.h:
 
-/usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/sodium/crypto_stream_xsalsa20.h:
-
 /usr/local/include/opencv4/opencv2/flann/saving.h:
-
-/usr/include/c++/12/cassert:
-
-/usr/local/include/opencv4/opencv2/flann/nn_index.h:
 
 /usr/include/sched.h:
 
@@ -4274,7 +4405,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/flann/allocator.h:
 
+/usr/include/aarch64-linux-gnu/bits/socket.h:
+
 /usr/include/c++/12/stdlib.h:
+
+/usr/include/c++/12/fenv.h:
 
 /usr/local/include/opencv4/opencv2/flann/kdtree_single_index.h:
 
@@ -4304,6 +4439,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/c++/12/bits/time_members.h:
 
+/usr/include/hailo/quantization.hpp:
+
 /usr/include/c++/12/bits/exception.h:
 
 /usr/include/aarch64-linux-gnu/c++/12/bits/messages_members.h:
@@ -4324,11 +4461,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/bits/signum-generic.h:
 
-/usr/include/sodium/crypto_core_hchacha20.h:
-
 /usr/include/c++/12/bits/stl_heap.h:
 
 /usr/local/include/opencv4/opencv2/flann/index_testing.h:
+
+/usr/include/aarch64-linux-gnu/bits/fenv.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/__FILE.h:
 
@@ -4350,6 +4487,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/ml/ml.inl.hpp:
 
+/usr/include/hailo/dma_mapped_buffer.hpp:
+
 /usr/local/include/opencv4/opencv2/objdetect.hpp:
 
 /usr/local/include/opencv4/opencv2/objdetect/aruco_board.hpp:
@@ -4357,8 +4496,6 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/local/include/opencv4/opencv2/core/operations.hpp:
 
 /usr/local/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp:
-
-/usr/include/sodium/crypto_sign_ed25519.h:
 
 /usr/include/c++/12/bits/std_mutex.h:
 
@@ -4388,9 +4525,13 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/sodium/crypto_box.h:
 
+/usr/include/hailo/network_group.hpp:
+
 /usr/include/c++/12/list:
 
 /usr/include/c++/12/queue:
+
+/usr/include/hailo/inference_pipeline.hpp:
 
 /usr/include/c++/12/bits/stl_queue.h:
 
@@ -4404,17 +4545,27 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/stitching/detail/blenders.hpp:
 
+/usr/include/fenv.h:
+
 /usr/local/include/opencv4/opencv2/video/background_segm.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/cpu-set.h:
 
 /home/cloud9/sangmin/new_hanium/pratice/sharedResource.hpp:
 
+/usr/local/include/opencv4/opencv2/flann/nn_index.h:
+
+/usr/include/c++/12/cassert:
+
 /usr/include/c++/12/tr1/legendre_function.tcc:
 
 /usr/include/aarch64-linux-gnu/bits/signum-arch.h:
 
 /usr/include/zymkey/zkAppUtilsClass.h:
+
+/usr/include/sodium/export.h:
+
+/usr/include/hailo/runtime_statistics.hpp:
 
 /usr/include/zymkey/zk_app_utils.h:
 
@@ -4430,6 +4581,98 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /home/cloud9/sangmin/new_hanium/pratice/inference.hpp:
 
+/usr/local/include/opencv4/opencv2/core/utility.hpp:
+
+/usr/include/hailo/hailort.h:
+
+/usr/include/hailo/hailort.hpp:
+
+/usr/include/hailo/platform.h:
+
+/usr/include/unistd.h:
+
+/usr/include/sodium/crypto_stream_salsa20.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/c++/12/ext/numeric_traits.h:
+
+/usr/include/aarch64-linux-gnu/bits/environments.h:
+
+/usr/include/sodium/crypto_kdf_blake2b.h:
+
+/usr/include/aarch64-linux-gnu/bits/getopt_posix.h:
+
+/usr/include/aarch64-linux-gnu/bits/getopt_core.h:
+
+/usr/lib/gcc/aarch64-linux-gnu/12/include/stdbool.h:
+
+/usr/include/linux/close_range.h:
+
+/usr/include/aarch64-linux-gnu/sys/socket.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h:
+
+/usr/include/aarch64-linux-gnu/bits/sockaddr.h:
+
+/usr/local/include/opencv4/opencv2/core/mat.hpp:
+
+/usr/include/asm-generic/socket.h:
+
+/usr/include/linux/posix_types.h:
+
+/usr/local/include/opencv4/opencv2/flann/kdtree_index.h:
+
+/usr/lib/linux/uapi/arm64/asm/posix_types.h:
+
+/usr/lib/linux/uapi/arm64/asm/sockios.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_osockaddr.h:
+
+/usr/include/netinet/in.h:
+
+/usr/include/aarch64-linux-gnu/bits/in.h:
+
+/usr/include/sodium/crypto_scalarmult_curve25519.h:
+
+/usr/local/include/opencv4/opencv2/flann/autotuned_index.h:
+
+/usr/include/c++/12/fstream:
+
+/usr/include/aarch64-linux-gnu/sys/un.h:
+
+/usr/include/c++/12/bits/stl_relops.h:
+
+/usr/include/hailo/hailort_common.hpp:
+
+/usr/include/sodium/crypto_aead_xchacha20poly1305.h:
+
+/usr/include/hailo/expected.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/types/stack_t.h:
+
+/usr/include/hailo/buffer.hpp:
+
+/usr/include/pthread.h:
+
+/usr/include/hailo/device.hpp:
+
+/usr/include/hailo/stream.hpp:
+
+/usr/include/aarch64-linux-gnu/sys/poll.h:
+
+/usr/include/hailo/vstream.hpp:
+
+/usr/include/hailo/infer_model.hpp:
+
+/usr/local/include/opencv4/opencv2/flann/config.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_statx_timestamp.h:
+
+/usr/include/hailo/transform.hpp:
+
 /usr/include/aarch64-linux-gnu/c++/12/bits/basic_file.h:
 
 /usr/include/c++/12/bits/fstream.tcc:
@@ -4438,21 +4681,7 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/lib/linux/uapi/arm64/asm/types.h:
 
-/usr/include/aarch64-linux-gnu/bits/xopen_lim.h:
-
-/usr/include/sodium/crypto_core_hsalsa20.h:
-
 /usr/include/asm-generic/int-ll64.h:
-
-/usr/include/linux/posix_types.h:
-
-/usr/local/include/opencv4/opencv2/flann/kdtree_index.h:
-
-/usr/lib/linux/uapi/arm64/asm/posix_types.h:
-
-/usr/local/include/opencv4/opencv2/flann/config.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct_statx_timestamp.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_statx.h:
 
@@ -4490,27 +4719,9 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/bits/procfs-prregset.h:
 
-/usr/include/unistd.h:
+/usr/include/sodium/crypto_core_salsa2012.h:
 
-/usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h:
-
-/usr/include/sodium/crypto_stream_salsa20.h:
-
-/usr/include/aarch64-linux-gnu/bits/posix_opt.h:
-
-/usr/include/c++/12/ext/numeric_traits.h:
-
-/usr/include/aarch64-linux-gnu/bits/environments.h:
-
-/usr/include/sodium/crypto_kdf_blake2b.h:
-
-/usr/include/aarch64-linux-gnu/bits/getopt_posix.h:
-
-/usr/include/aarch64-linux-gnu/bits/getopt_core.h:
-
-/usr/lib/gcc/aarch64-linux-gnu/12/include/stdbool.h:
-
-/usr/include/linux/close_range.h:
+/usr/include/aarch64-linux-gnu/bits/sigstksz.h:
 
 /usr/include/aarch64-linux-gnu/bits/sigthread.h:
 
@@ -4521,63 +4732,3 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/c++/12/tr1/poly_hermite.tcc:
 
 /usr/include/sodium.h:
-
-/usr/include/sodium/core.h:
-
-/usr/include/sodium/crypto_aead_aes256gcm.h:
-
-/usr/include/sodium/crypto_aead_chacha20poly1305.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h:
-
-/usr/include/sodium/crypto_auth_hmacsha512256.h:
-
-/usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp:
-
-/usr/include/sodium/crypto_auth_hmacsha256.h:
-
-/usr/include/sodium/crypto_core_salsa20.h:
-
-/usr/include/aarch64-linux-gnu/bits/sigstksz.h:
-
-/usr/include/sodium/crypto_core_salsa2012.h:
-
-/usr/include/c++/12/ratio:
-
-/usr/include/sodium/crypto_generichash.h:
-
-/usr/include/sodium/crypto_generichash_blake2b.h:
-
-/usr/include/sodium/crypto_hash.h:
-
-/usr/include/c++/12/bits/concept_check.h:
-
-/usr/include/sodium/crypto_kdf.h:
-
-/usr/local/include/opencv4/opencv2/core/ovx.hpp:
-
-/usr/include/sodium/crypto_onetimeauth_poly1305.h:
-
-/usr/include/sodium/crypto_pwhash_argon2i.h:
-
-/usr/include/sodium/crypto_pwhash_argon2id.h:
-
-/usr/local/include/opencv4/opencv2/flann/autotuned_index.h:
-
-/usr/include/c++/12/fstream:
-
-/usr/include/sodium/crypto_scalarmult_curve25519.h:
-
-/usr/include/sodium/crypto_secretbox.h:
-
-/usr/include/aarch64-linux-gnu/c++/12/bits/atomic_word.h:
-
-/usr/include/sodium/crypto_shorthash.h:
-
-/usr/include/sodium/crypto_sign.h:
-
-/usr/include/sodium/crypto_hash_sha512.h:
-
-/usr/include/c++/12/bits/uniform_int_dist.h:
-
-/usr/include/sodium/crypto_stream.h:

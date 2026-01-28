@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/cloud9/sangmin/new_hanium/pratice/include -I/usr/include/zymkey -isystem /usr/local/include/opencv4
 
-CXX_FLAGS = -g
+CXX_FLAGS = -g -std=gnu++17
 

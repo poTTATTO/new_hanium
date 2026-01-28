@@ -501,10 +501,9 @@ CMakeFiles/hanium_test.dir/main.cpp.o: \
  /usr/include/sodium/crypto_stream_salsa2012.h \
  /usr/include/sodium/crypto_stream_salsa208.h \
  /usr/include/sodium/crypto_stream_xchacha20.h \
- /usr/include/curlpp/cURLpp.hpp \
- /usr/include/aarch64-linux-gnu/curl/curl.h \
- /usr/include/aarch64-linux-gnu/curl/curlver.h \
- /usr/include/aarch64-linux-gnu/curl/system.h \
+ /home/cloud9/sangmin/new_hanium/pratice/inference.hpp \
+ /usr/include/hailo/hailort.hpp /usr/include/hailo/hailort.h \
+ /usr/include/hailo/platform.h \
  /usr/include/aarch64-linux-gnu/sys/socket.h \
  /usr/include/aarch64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/aarch64-linux-gnu/bits/socket.h \
@@ -514,6 +513,26 @@ CMakeFiles/hanium_test.dir/main.cpp.o: \
  /usr/lib/linux/uapi/arm64/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/aarch64-linux-gnu/bits/types/struct_osockaddr.h \
+ /usr/include/netinet/in.h /usr/include/aarch64-linux-gnu/bits/in.h \
+ /usr/include/arpa/inet.h /usr/include/aarch64-linux-gnu/sys/un.h \
+ /usr/include/hailo/hailort_common.hpp /usr/include/hailo/expected.hpp \
+ /usr/include/hailo/buffer.hpp /usr/include/c++/12/cassert \
+ /usr/include/hailo/hef.hpp /usr/include/hailo/device.hpp \
+ /usr/include/hailo/network_group.hpp /usr/include/hailo/stream.hpp \
+ /usr/include/hailo/event.hpp /usr/include/poll.h \
+ /usr/include/aarch64-linux-gnu/sys/poll.h \
+ /usr/include/aarch64-linux-gnu/bits/poll.h \
+ /usr/include/hailo/runtime_statistics.hpp /usr/include/hailo/vdevice.hpp \
+ /usr/include/hailo/vstream.hpp /usr/include/hailo/inference_pipeline.hpp \
+ /usr/include/hailo/infer_model.hpp /usr/include/hailo/transform.hpp \
+ /usr/include/hailo/network_rate_calculator.hpp \
+ /usr/include/hailo/quantization.hpp /usr/include/c++/12/fenv.h \
+ /usr/include/fenv.h /usr/include/aarch64-linux-gnu/bits/fenv.h \
+ /usr/include/hailo/hailort_defaults.hpp \
+ /usr/include/hailo/dma_mapped_buffer.hpp /usr/include/curlpp/cURLpp.hpp \
+ /usr/include/aarch64-linux-gnu/curl/curl.h \
+ /usr/include/aarch64-linux-gnu/curl/curlver.h \
+ /usr/include/aarch64-linux-gnu/curl/system.h \
  /usr/include/aarch64-linux-gnu/curl/easy.h \
  /usr/include/aarch64-linux-gnu/curl/multi.h \
  /usr/include/aarch64-linux-gnu/curl/curl.h \
@@ -529,7 +548,7 @@ CMakeFiles/hanium_test.dir/main.cpp.o: \
  /usr/include/curlpp/internal/OptionContainer.hpp \
  /usr/include/curlpp/internal/OptionContainerType.hpp \
  /usr/include/curlpp/internal/SList.hpp /usr/include/curlpp/Form.hpp \
- /usr/include/utilspp/clone_ptr.hpp /usr/include/c++/12/cassert \
+ /usr/include/utilspp/clone_ptr.hpp \
  /usr/include/curlpp/internal/OptionContainer.inl \
  /usr/include/curlpp/OptionBase.hpp /usr/include/curlpp/Option.inl \
  /usr/include/curlpp/internal/OptionSetter.hpp \
