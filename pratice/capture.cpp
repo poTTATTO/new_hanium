@@ -7,7 +7,7 @@ CaptureWorker::CaptureWorker(SharedResourceManager& r) : res(r) , cap(0, cv::CAP
 
     cap.set(cv::CAP_PROP_FRAME_WIDTH,640);
     cap.set(cv::CAP_PROP_FRAME_HEIGHT, 480);
-    
+    cap.set(cv::CAP_PROP_FPS, 30); 
 }
 
 void CaptureWorker::start_worker(){
@@ -26,7 +26,7 @@ void CaptureWorker::capture_task(){
             continue;
         }
         frame_id++;
-        Long idx = frame_id % SIZE;
+        Long idx = frame_id % SLOT_POOL_SIZE;
 
         if(res.slot_pool[idx].is_occupied.load()){
             std::cerr<<"[Capture] Slot"<<idx<<" is occupied. Dropping frame "<<frame_id<<std::endl;
@@ -34,7 +34,8 @@ void CaptureWorker::capture_task(){
         }
         
         slot_init(idx);
-        res.distribute_task(idx);
+        res.distribute_task_to_save(idx);
+        res.distribute_task_to_proc(idx);
     }
 }
 
@@ -45,10 +46,9 @@ void CaptureWorker::do_capture(){
 
 void CaptureWorker::slot_init(Long idx){
         Slot& slot = res.slot_pool[idx];
-
-        slot.is_valid.store(true);
+        slot.frame_id.store(frame_id);
         slot.tasks_left.store(TEST_COUNT);
         slot.frame = std::move(frame);
-        slot.frame_id = frame_id;
+        slot.is_valid.store(true);
         slot.is_occupied.store(true);
 }

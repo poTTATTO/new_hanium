@@ -12,18 +12,22 @@
 #include<zymkey/zkAppUtilsClass.h>
 #include<zk_app_utils.h>
 #include<zk_b64.h>
-
+#include<new>
+#define SLOT_POOL_SIZE 2000 
 typedef long long Long;
+
 
 class Slot{
 public:
     int id;
-    Long frame_id = -1;
+    std::atomic<long> frame_id = -1;
     std::atomic<int> tasks_left{0};
-    std::atomic<bool> is_occupied{false};
-    std::atomic<bool> is_valid{true};
+    
+    alignas(std::hardware_destructive_interference_size) std::atomic<bool> is_occupied{false};
+    alignas(std::hardware_destructive_interference_size) std::atomic<bool> is_valid{true};
     cv::Mat frame;
-    zkAppUtils::byteArray signature;
+    std::vector<unsigned char> signature;
+    // zkAppUtils::byteArray signature;
     
 
     Slot();
@@ -35,7 +39,7 @@ public:
 
 class SharedResourceManager {
 public:    
-    Slot slot_pool[300];
+    Slot slot_pool[SLOT_POOL_SIZE];
     // 각 작업자용 큐와 동기화 도구들
     std::queue<Long> inference_q, save_q, processing_q, send_q;
     std::mutex m_inf, m_save, m_proc, m_send;
@@ -44,5 +48,8 @@ public:
     // Capture 스레드가 호출: 세 개의 큐에 인덱스를 동시에 배분
     SharedResourceManager();
     void distribute_task(Long idx);
+    void distribute_task_to_save(Long idx);
+    void distribute_task_to_proc(Long idx);
+    void distribute_task_to_inf(Long idx);
 
 };

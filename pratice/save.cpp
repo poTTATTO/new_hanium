@@ -31,12 +31,19 @@ void SaveWorker::do_save(Long idx){
     Slot& slot = res.slot_pool[idx];
     if(slot.is_valid){
         std::cout<<"[Save] Processing Slot : "<< idx<<std::endl;
+
+        if(slot.frame.empty()) {
+            std::cerr << "[CRITICAL] Slot " << idx << " 의 프레임이 비어 있어 저장을 건너뜁니다! ㅋ" << std::endl;
+            slot.mark_done(res.save_q, res.m_save, res.cv_save);
+            return;
+        }
         std::string save_path = "/home/cloud9/sangmin/new_hanium/photo/ID_" + std::to_string(slot.frame_id) + ".jpg";
         if(!cv::imwrite(save_path, slot.frame)){
             slot.is_valid = false;
             std::cout<<"["<<slot.frame_id<<"]"<<"저장 실패"<<std::endl;
         }else{
             std::cout<<"["<<slot.frame_id<<"]"<< "저장 성공"<<std::endl;
+            slot.is_valid.store(true);
         }
     }
     

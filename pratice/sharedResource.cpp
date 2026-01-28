@@ -8,7 +8,8 @@ void Slot::mark_done(std::queue<Long>& send_q, std::mutex& mtx, std::condition_v
             {
                 std::lock_guard<std::mutex> lock(mtx);
                 send_q.push(id);
-                clear();
+                is_valid.store(false);
+                is_occupied.store(false);
             }
             cv.notify_one();
         }
@@ -16,7 +17,7 @@ void Slot::mark_done(std::queue<Long>& send_q, std::mutex& mtx, std::condition_v
 
 void Slot::clear(){
         is_occupied.store(false);
-        frame_id = -1;
+        frame_id.store(0);
         is_valid.store(true);
         frame.release();
         tasks_left.store(3);
@@ -24,30 +25,33 @@ void Slot::clear(){
 
 
 SharedResourceManager::SharedResourceManager(){
-        for(int i=0; i<300; i++){
+        for(int i=0; i<SLOT_POOL_SIZE; i++){
             slot_pool[i].id = i;
         }
     }
 
 
-void SharedResourceManager::distribute_task(Long idx) {
+void SharedResourceManager::distribute_task_to_inf(Long idx) {
         {
             std::lock_guard<std::mutex> lock(m_inf);
             inference_q.push(idx);
         }
         cv_inf.notify_one();
-
-        {
-            std::lock_guard<std::mutex> lock(m_save);
-            save_q.push(idx);
-        }
-        cv_save.notify_one();
-
-        {
-            std::lock_guard<std::mutex> lock(m_proc);
-            processing_q.push(idx);
-        }
-        cv_proc.notify_one();
-
 }
+
+void SharedResourceManager::distribute_task_to_save(Long idx){
+    {
+        std::lock_guard<std::mutex> lock(m_save);
+        save_q.push(idx);
+    }
+    cv_save.notify_one();
+}
+
+void SharedResourceManager::distribute_task_to_proc(Long idx){
+    {
+        std::lock_guard<std::mutex> lock(m_proc);
+        processing_q.push(idx);
+    }
+    cv_proc.notify_one();
+    }
 

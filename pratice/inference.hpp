@@ -6,6 +6,10 @@
 #include<opencv2/opencv.hpp>
 #include<thread>
 #include<iostream>
+#include "hailo/hailort.hpp"
+#include<vector>
+#include<string>
+#include<memory>
 
 class InferenceWorker{
 private:

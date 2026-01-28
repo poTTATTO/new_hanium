@@ -15,9 +15,10 @@
 #include<zymkey/zkAppUtilsClass.h>
 #include<zk_app_utils.h>
 #include<zk_b64.h>
+#include<condition_variable>
 
+typedef long long Long;
 zkAppUtils::byteArray compute_hash_sodium(const cv::Mat& frame){
-    if(sodium_init() < 0) throw std::runtime_error("Sodium init failed");
 
     cv::Mat gray;
     if(frame.channels() > 1){
@@ -86,7 +87,66 @@ void create_new_key(int slot) {
     }
 }
 
+class Slot{
+public:
+    int id;
+    Long frame_id = -1;
+    std::atomic<int> tasks_left{0};
+    
+    alignas(std::hardware_destructive_interference_size) std::atomic<bool> is_occupied{false};
+    alignas(std::hardware_destructive_interference_size) std::atomic<bool> is_valid{true};
+    cv::Mat frame;
+    zkAppUtils::byteArray signature;
+    
+
+    Slot(){}
+    Slot(int i);
+
+};
+
+// 오직 연산만 수행하는 순수 서명 함수 ㅋ
+std::vector<unsigned char> sign_frame_libsodium(const cv::Mat& frame, const unsigned char* secret_key) {
+    // 1. 영상 가공 (libsodium 연산 전 데이터 전처리 ㅋ)
+    cv::Mat gray;
+    if (frame.channels() > 1) {
+        cv::cvtColor(frame, gray, cv::COLOR_BGR2GRAY);
+    } else {
+        gray = frame;
+    }
+    if (!gray.isContinuous()) gray = gray.clone();
+
+    // 2. 해시 생성 (Ed25519 서명용 입력값 준비 ㅋ)
+    std::vector<unsigned char> hash(crypto_generichash_BYTES);
+    crypto_generichash(
+        hash.data(), hash.size(),
+        gray.data, gray.total() * gray.elemSize(),
+        NULL, 0
+    );
+
+    // 3. 서명 연산 (Detached 방식 - 서명값만 생성 ㅋ)
+    std::vector<unsigned char> signature(crypto_sign_BYTES);
+    
+    // 연산 성공 시 0 반환, 실패 시 -1 반환 ㅋ
+    if (crypto_sign_detached(signature.data(), NULL, hash.data(), hash.size(), secret_key) != 0) {
+        std::cerr << "[ERROR] 서명 연산 실패!" << std::endl;
+        return {}; // 빈 벡터 반환 ㅋ
+    }
+
+    return signature;
+}
+
 int main(){
+
+
+    if(sodium_init() < 0) throw std::runtime_error("Sodium init failed");
+    // Slot slot;
+    // std::cout<<sizeof(slot);
+
+    std::vector<unsigned char> public_key(crypto_sign_PUBLICKEYBYTES);
+    std::vector<unsigned char> secret_key(crypto_sign_SECRETKEYBYTES);
+
+    crypto_sign_keypair(public_key.data(), secret_key.data());
+    std::cout << "키 생성 완료! ㅋ" << std::endl;
 
     std::string image_path = "../test_image_coco.jpg";
     cv::Mat img = cv::imread(image_path);
@@ -99,13 +159,16 @@ int main(){
     create_new_key(0);
 
     auto total_start_time = std::chrono::steady_clock::now();
-    sign_with_zymkey(img, 0);
-
+    for(int i=0; i<1000; i++){
+        
+        sign_frame_libsodium(img, secret_key.data());
+        // sign_with_zymkey(img, 0);
+    }
     auto total_end_time = std::chrono::steady_clock::now();
 
     int duration = std::chrono::duration_cast<std::chrono::milliseconds>(total_end_time - total_start_time).count();
 
-    std::cout<<duration<<" ms"<<std::endl;
+    std::cout<<(double)duration / 1000.0 <<" ms"<<std::endl;
        
     return 0;
 

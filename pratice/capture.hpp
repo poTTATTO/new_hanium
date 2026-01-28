@@ -7,7 +7,8 @@
 #include"sharedResource.hpp"
 #include<thread>
 #include<cerrno>
-#define SIZE 300
+#include<atomic>
+
 #define TEST_COUNT 2
 class CaptureWorker{
 private:    
@@ -18,7 +19,7 @@ private:
 public:
     cv::VideoCapture cap;
     cv::Mat frame;
-    Long frame_id=0;
+    std::atomic<Long> frame_id;
 
     CaptureWorker(SharedResourceManager& r);
     // ~CaptureWorker();

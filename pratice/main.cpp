@@ -30,30 +30,34 @@ void signal_handler(int signal){
 int main(){
    std::signal(SIGINT, signal_handler);
 
-   try{
+//    auto start_time = std::chrono::steady_clock::now();
 
-        void init_dependencies();
-        SharedResourceManager res;
+//    while(std::chrono::steady_clock::now() - start_time < std::chrono::seconds(20)){
 
-        SaveWorker saver(res);
-        CaptureWorker capturer(res);
-        ProcessingWorker processor(res);
+    init_dependencies();
+    SharedResourceManager res;
 
-        saver.start_worker();
-        capturer.start_worker();
-        processor.start_worker();
-
-        std::cout<<"종료 하려면 Ctrl + C를 누르세요"<<std::endl;
-
-        while(g_running){
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        }
-   }catch(const std::exception& e){
-    std::cerr<<"에러 발생 : "<<e.what()<<std::endl;
-    return 1;
-   }
+    CaptureWorker capturer(res);
+    SaveWorker saver(res);
+    ProcessingWorker processor(res);
+    
 
 
+
+    
+
+    capturer.start_worker();
+    saver.start_worker();
+    processor.start_worker();
+
+    std::cout<<"종료 하려면 Ctrl + C를 누르세요"<<std::endl;
+
+    while(g_running){
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    }
+   
+
+   
     std::cout<<"[MAIN] 정상 종료"<<std::endl;
 
     return 0;

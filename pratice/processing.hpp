@@ -17,7 +17,9 @@ private:
     SharedResourceManager& res;
     zkAppUtils::zkClass zk;
     std::thread process_thread;
-    bool stop_thread = false;
+    bool stop_thread = false; 
+    std::vector<unsigned char> public_key;
+    std::vector<unsigned char> secret_key;
 
 public:
     ProcessingWorker(SharedResourceManager& r);
@@ -25,7 +27,9 @@ public:
     void start_worker();
     void process_task();
     void do_process(Long idx);
-    zkAppUtils::byteArray compute_hash_sodium(const cv::Mat& frame);
-    zkAppUtils::byteArray* sign_with_zymkey(const cv::Mat& frame, int slot);
-    void create_new_key(int);
+    int sign_keypair(unsigned char* secret_key,unsigned char* public_key);
+    std::vector<unsigned char> sign_frame_libsodium(const cv::Mat& frame, const unsigned char* secret_key); 
+    // zkAppUtils::byteArray compute_hash_sodium(const cv::Mat& frame);
+    // zkAppUtils::byteArray* sign_with_zymkey(const cv::Mat& frame, int slot);
+    // void create_new_key(int);
 };
