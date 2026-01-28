@@ -36,7 +36,7 @@ void SharedResourceManager::distribute_task_to_inf(Long idx) {
             std::lock_guard<std::mutex> lock(m_inf);
             inference_q.push(idx);
         }
-        cv_inf.notify_one();
+    cv_inf.notify_one();
 }
 
 void SharedResourceManager::distribute_task_to_save(Long idx){
@@ -53,5 +53,5 @@ void SharedResourceManager::distribute_task_to_proc(Long idx){
         processing_q.push(idx);
     }
     cv_proc.notify_one();
-    }
+}
 

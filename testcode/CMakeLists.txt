@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(OpenCV REQUIRED)
 
 find_package(PkgConfig REQUIRED)
+find_package(nlohmann_json REQUIRED)
 
 pkg_check_modules(SODIUM REQUIRED libsodium)
 pkg_check_modules(CURLPP REQUIRED curlpp)
@@ -32,6 +33,7 @@ target_link_libraries(test
     ${ZK_LIB}
     ${ZK_CPP_LIB}
     ${HAILORT_LIB}
+    nlohmann_json::nlohmann_json
 )
 
 

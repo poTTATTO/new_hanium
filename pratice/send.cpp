@@ -12,13 +12,35 @@ SendWorker::~SendWorker(){
 
 void SendWorker::start_worker(){
     send_thread = std::thread([this] {send_task();});
+
 }
 
 void SendWorker::send_task(){
     pthread_setname_np(pthread_self(), "Send Thread");
+    while(true){
+        Long idx;
+        {
+            std::unique_lock<std::mutex> lock(res.m_send);
+            res.cv_send.wait(lock, [this] {return !res.send_q.empty();});
+            if(stop_thread && res.send_q.empty()) break;
+            idx = res.send_q.front();
+            res.send_q.pop();
+        }
+        do_send(idx);
+    }
 
 }
 
 void SendWorker::do_send(){
     
+}
+
+std::string convert_to_json_detection(const std::vector<Detection>& detection){
+    nlohmann::json root;
+
+    root["number of data"] = detection.size();
+
+    for(size_t i = 0; i< detection.size(); i++){
+        
+    }
 }

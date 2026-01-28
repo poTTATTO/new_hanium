@@ -5,12 +5,15 @@
 #include <string>
 #include <algorithm>
 #include <cmath>
+#include<nlohmann/json.hpp>
+
+using json = nlohmann::json;
 struct Detection{
     int cls;
     float prob;
     std::vector<int>bbox;
 };
-
+std::string convert_to_json_string(const std::vector<Detection>& detection);
 
 const std::vector<std::string> COCO_LABELS = { "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard", "surfboard", "tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch", "potted plant", "bed", "dining table", "toilet", "tv", "laptop", "mouse", "remote", "keyboard", "cell phone", "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush" };
 
@@ -137,6 +140,31 @@ int main() {
         std::cout << "---------------------------" << std::endl;
     }
 
+    std::cout<<convert_to_json_string(detections)<<std::endl;
+
     return 0;
 }
 
+
+std::string convert_to_json_string(const std::vector<Detection>& detections) {
+    json root;
+
+    // 1. 데이터 개수 삽입
+    root["number of data"] = detections.size();
+
+    // 2. 각 탐지 결과를 인덱스 번호를 키(Key)로 하여 삽입
+    for (size_t i = 0; i < detections.size(); ++i) {
+        json obj;
+        obj["cls"] = detections[i].cls;
+        obj["prob"] = detections[i].prob;
+        obj["bbox"] = detections[i].bbox; // std::vector는 자동으로 JSON 배열로 변환됨
+
+        // 인덱스를 문자열 키로 사용하여 추가
+        root[std::to_string(i)] = obj;
+    }
+
+    // 3. JSON 객체를 최종 전송용 문자열로 변환 (직렬화)
+    // dump()의 인자로 숫자를 주면 들여쓰기(Pretty-print)가 적용됩니다. 
+    // 전송 시에는 인자 없이 dump()만 써서 크기를 최소화하세요.
+    return root.dump(); 
+}

@@ -94,7 +94,7 @@ void InferenceWorker::do_inference(Long idx){
         
     ///*
         if (detection.empty()) {
-            std::cout << "탐지된 객체가 없습니다. ㅋ" << std::endl;
+            std::cout << "탐지된 객체가 없습니다." << std::endl;
         } else {
             std::cout << "--- 탐지 결과 (" << detection.size() << "건) ---" << std::endl;
             
