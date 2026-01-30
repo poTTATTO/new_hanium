@@ -72,6 +72,7 @@ void InferenceWorker::do_inference(Long idx){
     if(slot.is_valid.load() && !slot.frame.empty()){
         std::cout << "[Inference] Slot : "<<idx<<std::endl;
         cv::Mat tmp = slot.frame;
+        
         if(!tmp.isContinuous()) tmp = tmp.clone();
         cv::cvtColor(tmp, tmp, cv::COLOR_BGR2RGB);
         std::vector<Detection> detection;
@@ -88,9 +89,7 @@ void InferenceWorker::do_inference(Long idx){
 
         detection = parse_to_list();
         
-        
-        slot.detection = detection;
-        std::cout<<"["<<slot.frame_id.load()<<"] 추론 성공"<<std::endl;
+
         
     ///*
         if (detection.empty()) {
@@ -108,6 +107,10 @@ void InferenceWorker::do_inference(Long idx){
         }
             
         //    */
+        slot.detection_result = std::move(convert_to_json_string(detection));
+
+        std::cout<<"["<<slot.frame_id.load()<<"] 추론 성공"<<std::endl;
+        
     }else{
         std::cout<<"추론 실패"<<std::endl;
     }
@@ -142,4 +145,29 @@ std::vector<Detection> InferenceWorker::parse_to_list(){
         }
     }
     return current_detections;
-   }
+}
+
+std::string InferenceWorker::convert_to_json_string(const std::vector<Detection>& detections) {
+    // 1. 최상위 객체를 배열(Array) 형식으로 선언 ㅋ
+    nlohmann::json j_array = nlohmann::json::array();
+
+    for (const auto& det : detections) {
+        json obj;
+        // 클래스 번호를 문자열 라벨로 변환 ㅋ
+        obj["class"] = COCO_LABELS[det.cls]; 
+        obj["prob"] = std::round(det.prob * 100) / 100.0; // 소수점 2자리 반올림 (Python 코드와 맞춤) ㅋ
+        
+        // bbox [x1, y1, x2, y2] 순서를 개별 키로 분리 ㅋ
+        obj["xmin"] = det.bbox[0];
+        obj["ymin"] = det.bbox[1];
+        obj["xmax"] = det.bbox[2];
+        obj["ymax"] = det.bbox[3];
+
+        // 배열에 추가 ㅋ
+        j_array.push_back(obj);
+    }
+
+    // 2. dump(4)를 주면 들여쓰기가 포함된 예쁜 JSON이 나옵니다. ㅋ
+    // 실전 전송 시에는 dump()만 써서 한 줄로 만드세요.
+    return j_array.dump();
+}

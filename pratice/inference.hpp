@@ -10,7 +10,9 @@
 #include<vector>
 #include<string>
 #include<memory>
+#include<nlohmann/json.hpp>
 
+using json = nlohmann::json;
 
 
 class InferenceWorker{
@@ -38,4 +40,5 @@ public:
     void inference_task();
     void do_inference(Long idx);
     std::vector<Detection> parse_to_list();
+    std::string convert_to_json_string(const std::vector<Detection>& detections);
 };

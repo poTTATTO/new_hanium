@@ -1,6 +1,5 @@
 #include"send.hpp"
 
-
 SendWorker::SendWorker(SharedResourceManager& r) : res(r){}
 
 SendWorker::~SendWorker(){
@@ -31,16 +30,7 @@ void SendWorker::send_task(){
 
 }
 
-void SendWorker::do_send(){
+void SendWorker::do_send(Long idx){
     
 }
 
-std::string convert_to_json_detection(const std::vector<Detection>& detection){
-    nlohmann::json root;
-
-    root["number of data"] = detection.size();
-
-    for(size_t i = 0; i< detection.size(); i++){
-        
-    }
-}

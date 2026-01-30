@@ -147,24 +147,26 @@ int main() {
 
 
 std::string convert_to_json_string(const std::vector<Detection>& detections) {
-    json root;
+    // 1. 최상위 객체를 배열(Array) 형식으로 선언 ㅋ
+    nlohmann::json j_array = nlohmann::json::array();
 
-    // 1. 데이터 개수 삽입
-    root["number of data"] = detections.size();
-
-    // 2. 각 탐지 결과를 인덱스 번호를 키(Key)로 하여 삽입
-    for (size_t i = 0; i < detections.size(); ++i) {
+    for (const auto& det : detections) {
         json obj;
-        obj["cls"] = detections[i].cls;
-        obj["prob"] = detections[i].prob;
-        obj["bbox"] = detections[i].bbox; // std::vector는 자동으로 JSON 배열로 변환됨
+        // 클래스 번호를 문자열 라벨로 변환 ㅋ
+        obj["class"] = COCO_LABELS[det.cls]; 
+        obj["prob"] = std::round(det.prob * 100) / 100.0; // 소수점 2자리 반올림 (Python 코드와 맞춤) ㅋ
+        
+        // bbox [x1, y1, x2, y2] 순서를 개별 키로 분리 ㅋ
+        obj["xmin"] = det.bbox[0];
+        obj["ymin"] = det.bbox[1];
+        obj["xmax"] = det.bbox[2];
+        obj["ymax"] = det.bbox[3];
 
-        // 인덱스를 문자열 키로 사용하여 추가
-        root[std::to_string(i)] = obj;
+        // 배열에 추가 ㅋ
+        j_array.push_back(obj);
     }
 
-    // 3. JSON 객체를 최종 전송용 문자열로 변환 (직렬화)
-    // dump()의 인자로 숫자를 주면 들여쓰기(Pretty-print)가 적용됩니다. 
-    // 전송 시에는 인자 없이 dump()만 써서 크기를 최소화하세요.
-    return root.dump(); 
+    // 2. dump(4)를 주면 들여쓰기가 포함된 예쁜 JSON이 나옵니다. ㅋ
+    // 실전 전송 시에는 dump()만 써서 한 줄로 만드세요.
+    return j_array.dump();
 }

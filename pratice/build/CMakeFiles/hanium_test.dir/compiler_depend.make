@@ -3029,7 +3029,77 @@ CMakeFiles/hanium_test.dir/send.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/s
   /usr/include/curlpp/internal/OptionSetter.inl \
   /usr/include/curlpp/Exception.hpp \
   /usr/include/curlpp/Easy.inl \
-  /usr/include/curlpp/Options.hpp
+  /usr/include/curlpp/Options.hpp \
+  /usr/include/nlohmann/json.hpp \
+  /usr/include/c++/12/iterator \
+  /usr/include/c++/12/bits/stream_iterator.h \
+  /usr/include/c++/12/numeric \
+  /usr/include/c++/12/bits/stl_numeric.h \
+  /usr/include/c++/12/pstl/glue_numeric_defs.h \
+  /usr/include/nlohmann/adl_serializer.hpp \
+  /usr/include/nlohmann/detail/abi_macros.hpp \
+  /usr/include/nlohmann/detail/conversions/from_json.hpp \
+  /usr/include/c++/12/forward_list \
+  /usr/include/c++/12/bits/forward_list.h \
+  /usr/include/c++/12/bits/forward_list.tcc \
+  /usr/include/c++/12/valarray \
+  /usr/include/c++/12/bits/valarray_array.h \
+  /usr/include/c++/12/bits/valarray_array.tcc \
+  /usr/include/c++/12/bits/valarray_before.h \
+  /usr/include/c++/12/bits/slice_array.h \
+  /usr/include/c++/12/bits/valarray_after.h \
+  /usr/include/c++/12/bits/gslice.h \
+  /usr/include/c++/12/bits/gslice_array.h \
+  /usr/include/c++/12/bits/mask_array.h \
+  /usr/include/c++/12/bits/indirect_array.h \
+  /usr/include/nlohmann/detail/exceptions.hpp \
+  /usr/include/nlohmann/detail/value_t.hpp \
+  /usr/include/nlohmann/detail/macro_scope.hpp \
+  /usr/include/nlohmann/detail/meta/detected.hpp \
+  /usr/include/nlohmann/detail/meta/void_t.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley.hpp \
+  /usr/include/c++/12/version \
+  /usr/include/nlohmann/detail/string_escape.hpp \
+  /usr/include/nlohmann/detail/input/position_t.hpp \
+  /usr/include/nlohmann/detail/meta/cpp_future.hpp \
+  /usr/include/nlohmann/detail/meta/type_traits.hpp \
+  /usr/include/nlohmann/detail/iterators/iterator_traits.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/begin.hpp \
+  /usr/include/nlohmann/detail/meta/call_std/end.hpp \
+  /usr/include/nlohmann/json_fwd.hpp \
+  /usr/include/nlohmann/detail/string_concat.hpp \
+  /usr/include/nlohmann/detail/meta/identity_tag.hpp \
+  /usr/include/nlohmann/detail/meta/std_fs.hpp \
+  /usr/include/c++/12/filesystem \
+  /usr/include/c++/12/bits/fs_fwd.h \
+  /usr/include/c++/12/bits/fs_path.h \
+  /usr/include/c++/12/codecvt \
+  /usr/include/c++/12/bits/fs_dir.h \
+  /usr/include/c++/12/bits/fs_ops.h \
+  /usr/include/nlohmann/detail/conversions/to_json.hpp \
+  /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp \
+  /usr/include/nlohmann/byte_container_with_subtype.hpp \
+  /usr/include/nlohmann/detail/hash.hpp \
+  /usr/include/nlohmann/detail/input/binary_reader.hpp \
+  /usr/include/nlohmann/detail/input/input_adapters.hpp \
+  /usr/include/nlohmann/detail/input/json_sax.hpp \
+  /usr/include/nlohmann/detail/input/lexer.hpp \
+  /usr/include/nlohmann/detail/meta/is_sax.hpp \
+  /usr/include/nlohmann/detail/input/parser.hpp \
+  /usr/include/nlohmann/detail/iterators/internal_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/primitive_iterator.hpp \
+  /usr/include/nlohmann/detail/iterators/iter_impl.hpp \
+  /usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp \
+  /usr/include/nlohmann/detail/json_pointer.hpp \
+  /usr/include/nlohmann/detail/json_ref.hpp \
+  /usr/include/nlohmann/detail/output/binary_writer.hpp \
+  /usr/include/nlohmann/detail/output/output_adapters.hpp \
+  /usr/include/nlohmann/detail/output/serializer.hpp \
+  /usr/include/nlohmann/detail/conversions/to_chars.hpp \
+  /usr/include/nlohmann/ordered_map.hpp \
+  /usr/include/c++/12/any \
+  /usr/include/nlohmann/detail/macro_unscope.hpp \
+  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
 
 CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium/pratice/sharedResource.cpp \
   /usr/include/stdc-predef.h \
@@ -3465,6 +3535,80 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
   /usr/include/zymkey/zk_b64.h
 
 
+/usr/include/nlohmann/detail/macro_unscope.hpp:
+
+/usr/include/nlohmann/ordered_map.hpp:
+
+/usr/include/nlohmann/detail/conversions/to_chars.hpp:
+
+/usr/include/nlohmann/detail/output/binary_writer.hpp:
+
+/usr/include/nlohmann/detail/json_pointer.hpp:
+
+/usr/include/nlohmann/detail/meta/is_sax.hpp:
+
+/usr/include/nlohmann/detail/input/lexer.hpp:
+
+/usr/include/nlohmann/detail/input/json_sax.hpp:
+
+/usr/include/nlohmann/detail/input/input_adapters.hpp:
+
+/usr/include/nlohmann/detail/input/binary_reader.hpp:
+
+/usr/include/nlohmann/detail/hash.hpp:
+
+/usr/include/nlohmann/detail/iterators/iteration_proxy.hpp:
+
+/usr/include/c++/12/bits/fs_dir.h:
+
+/usr/include/c++/12/bits/fs_path.h:
+
+/usr/include/c++/12/filesystem:
+
+/usr/include/nlohmann/detail/meta/identity_tag.hpp:
+
+/usr/include/nlohmann/detail/string_concat.hpp:
+
+/usr/include/nlohmann/detail/meta/call_std/end.hpp:
+
+/usr/include/nlohmann/detail/meta/type_traits.hpp:
+
+/usr/include/nlohmann/detail/meta/cpp_future.hpp:
+
+/usr/include/nlohmann/detail/input/position_t.hpp:
+
+/usr/include/nlohmann/detail/string_escape.hpp:
+
+/usr/include/nlohmann/detail/meta/void_t.hpp:
+
+/usr/include/nlohmann/detail/value_t.hpp:
+
+/usr/include/c++/12/bits/gslice_array.h:
+
+/usr/include/c++/12/bits/gslice.h:
+
+/usr/include/c++/12/bits/slice_array.h:
+
+/usr/include/c++/12/bits/valarray_before.h:
+
+/usr/include/c++/12/bits/valarray_array.tcc:
+
+/usr/include/c++/12/bits/valarray_array.h:
+
+/usr/include/c++/12/valarray:
+
+/usr/include/c++/12/any:
+
+/usr/include/c++/12/bits/forward_list.tcc:
+
+/usr/include/c++/12/bits/forward_list.h:
+
+/usr/include/c++/12/numeric:
+
+/usr/include/c++/12/bits/stream_iterator.h:
+
+/usr/include/nlohmann/json.hpp:
+
 /home/cloud9/sangmin/new_hanium/pratice/send.cpp:
 
 /home/cloud9/sangmin/new_hanium/pratice/save.cpp:
@@ -3491,6 +3635,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/curlpp/internal/OptionList.hpp:
 
+/usr/include/nlohmann/detail/iterators/internal_iterator.hpp:
+
 /usr/include/curlpp/internal/CurlHandle.inl:
 
 /usr/include/curlpp/Exception.hpp:
@@ -3498,6 +3644,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/curlpp/internal/CurlHandle.hpp:
 
 /usr/include/curlpp/Easy.hpp:
+
+/usr/include/nlohmann/detail/output/output_adapters.hpp:
 
 /usr/include/aarch64-linux-gnu/curl/header.h:
 
@@ -3557,7 +3705,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/sodium/crypto_core_hchacha20.h:
 
+/usr/include/c++/12/bits/fs_fwd.h:
+
 /usr/include/sodium/crypto_box_curve25519xsalsa20poly1305.h:
+
+/usr/include/nlohmann/detail/conversions/to_json.hpp:
 
 /usr/include/sodium/crypto_auth_hmacsha512.h:
 
@@ -3572,6 +3724,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/local/include/opencv4/opencv2/flann/lsh_index.h:
 
 /usr/local/include/opencv4/opencv2/core/types.hpp:
+
+/usr/include/c++/12/pstl/glue_numeric_defs.h:
 
 /usr/local/include/opencv4/opencv2/core/matx.inl.hpp:
 
@@ -3621,6 +3775,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/wctype.h:
 
+/usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp:
+
 /usr/include/c++/12/bit:
 
 /usr/include/c++/12/bits/stl_raw_storage_iter.h:
@@ -3657,9 +3813,13 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
 
+/usr/include/c++/12/forward_list:
+
 /usr/include/aarch64-linux-gnu/bits/posix2_lim.h:
 
 /usr/include/aarch64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/c++/12/codecvt:
 
 /usr/include/c++/12/cfloat:
 
@@ -3677,6 +3837,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/linux/stat.h:
 
+/usr/include/c++/12/version:
+
 /usr/include/sodium/crypto_stream_xsalsa20.h:
 
 /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
@@ -3686,6 +3848,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/aarch64-linux-gnu/bits/math-vector.h:
 
 /usr/include/aarch64-linux-gnu/gnu/stubs.h:
+
+/usr/include/nlohmann/thirdparty/hedley/hedley.hpp:
 
 /usr/include/c++/12/map:
 
@@ -3699,9 +3863,13 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/bits/errno.h:
 
+/usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
+
 /usr/include/errno.h:
 
 /usr/include/hailo/vdevice.hpp:
+
+/usr/include/nlohmann/detail/iterators/primitive_iterator.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h:
 
@@ -3795,6 +3963,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/algorithm:
 
+/usr/include/c++/12/bits/stl_numeric.h:
+
 /usr/local/include/opencv4/opencv2/flann/lsh_table.h:
 
 /usr/lib/gcc/aarch64-linux-gnu/12/include/limits.h:
@@ -3827,6 +3997,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
 
+/usr/include/nlohmann/json_fwd.hpp:
+
 /usr/local/include/opencv4/opencv2/core/cuda.inl.hpp:
 
 /usr/include/c++/12/bits/hash_bytes.h:
@@ -3848,6 +4020,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/aarch64-linux-gnu/bits/typesizes.h:
 
 /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/nlohmann/byte_container_with_subtype.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
@@ -3963,6 +4137,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/cstdint:
 
+/usr/include/c++/12/bits/valarray_after.h:
+
 /usr/include/sodium/crypto_hash_sha256.h:
 
 /usr/lib/linux/uapi/arm64/asm/errno.h:
@@ -4002,6 +4178,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/local/include/opencv4/opencv2/core/neon_utils.hpp:
 
 /usr/include/aarch64-linux-gnu/sys/stat.h:
+
+/usr/include/c++/12/bits/fs_ops.h:
 
 /usr/include/c++/12/debug/debug.h:
 
@@ -4054,6 +4232,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/c++/12/bits/concept_check.h:
 
 /usr/lib/gcc/aarch64-linux-gnu/12/include/float.h:
+
+/usr/include/nlohmann/detail/json_ref.hpp:
 
 /usr/local/include/opencv4/opencv2/highgui.hpp:
 
@@ -4153,6 +4333,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/condition_variable:
 
+/usr/include/c++/12/bits/indirect_array.h:
+
 /usr/include/c++/12/bits/exception_defines.h:
 
 /usr/include/alloca.h:
@@ -4195,6 +4377,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/streambuf:
 
+/usr/include/nlohmann/detail/exceptions.hpp:
+
 /usr/include/wchar.h:
 
 /usr/include/c++/12/array:
@@ -4218,6 +4402,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/sodium/crypto_scalarmult_ed25519.h:
 
 /usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp:
+
+/usr/include/nlohmann/detail/conversions/from_json.hpp:
 
 /usr/include/c++/12/sstream:
 
@@ -4301,6 +4487,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/lib/linux/uapi/arm64/asm/socket.h:
 
+/usr/include/nlohmann/detail/iterators/iterator_traits.hpp:
+
 /usr/include/c++/12/mutex:
 
 /usr/include/asm-generic/sockios.h:
@@ -4321,6 +4509,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/imgcodecs.hpp:
 
+/usr/include/nlohmann/adl_serializer.hpp:
+
 /usr/include/aarch64-linux-gnu/sys/ucontext.h:
 
 /usr/local/include/opencv4/opencv2/flann/general.h:
@@ -4333,7 +4523,11 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/iostream:
 
+/usr/include/nlohmann/detail/iterators/iter_impl.hpp:
+
 /usr/local/include/opencv4/opencv2/core/utils/logger.defines.hpp:
+
+/usr/include/c++/12/iterator:
 
 /usr/local/include/opencv4/opencv2/core/utils/logtag.hpp:
 
@@ -4405,6 +4599,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/flann/allocator.h:
 
+/usr/include/nlohmann/detail/abi_macros.hpp:
+
 /usr/include/aarch64-linux-gnu/bits/socket.h:
 
 /usr/include/c++/12/stdlib.h:
@@ -4412,6 +4608,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/c++/12/fenv.h:
 
 /usr/local/include/opencv4/opencv2/flann/kdtree_single_index.h:
+
+/usr/include/nlohmann/detail/output/serializer.hpp:
 
 /usr/include/sodium/crypto_stream_salsa208.h:
 
@@ -4507,6 +4705,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/local/include/opencv4/opencv2/photo.hpp:
 
+/usr/include/nlohmann/detail/macro_scope.hpp:
+
 /usr/local/include/opencv4/opencv2/stitching.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/types/sigevent_t.h:
@@ -4575,6 +4775,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/c++/12/bits/this_thread_sleep.h:
 
+/usr/include/nlohmann/detail/meta/detected.hpp:
+
 /home/cloud9/sangmin/new_hanium/pratice/inference.cpp:
 
 /usr/include/sodium/randombytes.h:
@@ -4590,6 +4792,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/hailo/platform.h:
 
 /usr/include/unistd.h:
+
+/usr/include/nlohmann/detail/meta/std_fs.hpp:
 
 /usr/include/sodium/crypto_stream_salsa20.h:
 
@@ -4635,6 +4839,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 
 /usr/include/aarch64-linux-gnu/bits/in.h:
 
+/usr/include/nlohmann/detail/input/parser.hpp:
+
 /usr/include/sodium/crypto_scalarmult_curve25519.h:
 
 /usr/local/include/opencv4/opencv2/flann/autotuned_index.h:
@@ -4674,6 +4880,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/hailo/transform.hpp:
 
 /usr/include/aarch64-linux-gnu/c++/12/bits/basic_file.h:
+
+/usr/include/c++/12/bits/mask_array.h:
 
 /usr/include/c++/12/bits/fstream.tcc:
 
@@ -4722,6 +4930,8 @@ CMakeFiles/hanium_test.dir/sharedResource.cpp.o: /home/cloud9/sangmin/new_hanium
 /usr/include/sodium/crypto_core_salsa2012.h:
 
 /usr/include/aarch64-linux-gnu/bits/sigstksz.h:
+
+/usr/include/nlohmann/detail/meta/call_std/begin.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/sigthread.h:
 

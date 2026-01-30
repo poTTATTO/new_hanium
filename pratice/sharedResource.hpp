@@ -32,7 +32,7 @@ public:
     alignas(std::hardware_destructive_interference_size) std::atomic<bool> is_valid{true};
     cv::Mat frame;
     std::vector<unsigned char> signature;
-    std::vector<Detection> detection;
+    std::string detection_result;
     // zkAppUtils::byteArray signature;
     
 

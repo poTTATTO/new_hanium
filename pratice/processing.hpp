@@ -15,7 +15,7 @@
 class ProcessingWorker{
 private:
     SharedResourceManager& res;
-    zkAppUtils::zkClass zk;
+    // zkAppUtils::zkClass zk;
     std::thread process_thread;
     bool stop_thread = false; 
     std::vector<unsigned char> public_key;

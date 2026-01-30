@@ -9,7 +9,6 @@
 #include <curlpp/cURLpp.hpp>  // 전역 초기화용
 #include <curlpp/Easy.hpp>     // 실제 전송용 (Easy handle)
 #include <curlpp/Options.hpp>  // URL, PostFields 등 옵션 설정용
-#include<nlohmann/json.hpp>
 #include<string>
 
 class SendWorker{
@@ -23,6 +22,5 @@ public:
     ~SendWorker();
     void start_worker();
     void send_task();
-    void do_send();
-
+    void do_send(Long idx);
 };
