@@ -11,7 +11,7 @@ const std::vector<std::string> InferenceWorker::COCO_LABELS = {
     "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier", "toothbrush"
 };
 
-InferenceWorker::InferenceWorker(SharedResourceManager& r, const std::string hef_path) : res(r), hef_path(hef_path){
+InferenceWorker::InferenceWorker(SharedResourceManager& r, Config& c) : res(r), cfg(c), hef_path(c.getHefPath()){
     // 1. VDevice 초기화
     auto vdevice_exp = hailort::VDevice::create();
     if(!vdevice_exp) throw std::runtime_error("VDeice 생성 실패");
@@ -148,26 +148,25 @@ std::vector<Detection> InferenceWorker::parse_to_list(){
 }
 
 std::string InferenceWorker::convert_to_json_string(const std::vector<Detection>& detections) {
-    // 1. 최상위 객체를 배열(Array) 형식으로 선언 ㅋ
+    // 1. 최상위 객체를 배열(Array) 형식으로 선언 
     nlohmann::json j_array = nlohmann::json::array();
 
     for (const auto& det : detections) {
         json obj;
-        // 클래스 번호를 문자열 라벨로 변환 ㅋ
+        // 클래스 번호를 문자열 라벨로 변환 
         obj["class"] = COCO_LABELS[det.cls]; 
-        obj["prob"] = std::round(det.prob * 100) / 100.0; // 소수점 2자리 반올림 (Python 코드와 맞춤) ㅋ
+        obj["prob"] = std::round(det.prob * 100) / 100.0; 
         
-        // bbox [x1, y1, x2, y2] 순서를 개별 키로 분리 ㅋ
+        // bbox [x1, y1, x2, y2] 순서를 개별 키로 분리 
         obj["xmin"] = det.bbox[0];
         obj["ymin"] = det.bbox[1];
         obj["xmax"] = det.bbox[2];
         obj["ymax"] = det.bbox[3];
 
-        // 배열에 추가 ㅋ
+        // 배열에 추가 
         j_array.push_back(obj);
     }
 
-    // 2. dump(4)를 주면 들여쓰기가 포함된 예쁜 JSON이 나옵니다. ㅋ
-    // 실전 전송 시에는 dump()만 써서 한 줄로 만드세요.
+    // 실전 전송 시에는 dump()만 써서 한 줄로 
     return j_array.dump();
 }

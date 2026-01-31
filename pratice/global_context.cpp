@@ -22,7 +22,7 @@ GlobalContext::~GlobalContext(){
 
 }
 
-static GlobalContext& GlobalContext::getGlobalContextInstance(){
+GlobalContext& GlobalContext::getGlobalContextInstance(){
     static GlobalContext instance;
     return instance;
 }

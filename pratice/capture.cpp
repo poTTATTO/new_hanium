@@ -1,13 +1,13 @@
 #include"capture.hpp"
 
-CaptureWorker::CaptureWorker(SharedResourceManager& r) : res(r) , cap(0, cv::CAP_V4L2), frame_id(-1){
+CaptureWorker::CaptureWorker(SharedResourceManager& r, Config& c) : res(r), cfg(c), cap(0, cv::CAP_V4L2), frame_id(-1){
     if(!cap.isOpened()){
         std::cerr<<"카메라를 찾을 수 없음."<<std::endl;
     }
 
-    cap.set(cv::CAP_PROP_FRAME_WIDTH,640);
-    cap.set(cv::CAP_PROP_FRAME_HEIGHT, 640);
-    cap.set(cv::CAP_PROP_FPS, 30); 
+    cap.set(cv::CAP_PROP_FRAME_WIDTH, cfg.getWidth());
+    cap.set(cv::CAP_PROP_FRAME_HEIGHT, cfg.getHeight());
+    cap.set(cv::CAP_PROP_FPS, cfg.getFps()); 
 }
 
 void CaptureWorker::start_worker(){

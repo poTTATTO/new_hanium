@@ -11,6 +11,7 @@
 #include<string>
 #include<memory>
 #include<nlohmann/json.hpp>
+#include"config.hpp"
 
 using json = nlohmann::json;
 
@@ -18,6 +19,7 @@ using json = nlohmann::json;
 class InferenceWorker{
 private:
     SharedResourceManager& res;
+    Config& cfg;
     std::thread inference_thread;
     bool stop_thread = false;
     std::unique_ptr<hailort::VDevice> vdevice;
@@ -31,7 +33,7 @@ private:
     //COCO 라벨 데이터
     static const std::vector<std::string> COCO_LABELS;
 public:
-    explicit InferenceWorker(SharedResourceManager& r, const std::string hef_path);
+    explicit InferenceWorker(SharedResourceManager& r, Config& c);
     ~InferenceWorker();
     InferenceWorker(const InferenceWorker& i) = delete;
     InferenceWorker& operator = (const InferenceWorker&) = delete;

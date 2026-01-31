@@ -7,15 +7,18 @@
 #include<mutex>
 #include<condition_variable>
 #include"sharedResource.hpp"
+#include"config.hpp"
 
 class SaveWorker{
 private:
     SharedResourceManager& res;
+    Config& cfg;
     std::thread save_thread;
     bool stop_thread = false;
+    std::string save_path;
 
 public:
-    SaveWorker(SharedResourceManager& r);
+    SaveWorker(SharedResourceManager& r, Config& c);
     ~SaveWorker();
     void start_worker();
     void save_task();

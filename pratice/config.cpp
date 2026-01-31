@@ -1,5 +1,39 @@
 #include"config.hpp"
 
+Config& Config::getConfigInstance(){
+    static Config instance;
+    return instance;
+}
+
+Config::Config(){
+    readLoggerCfg();
+}
+    
+int Config::getWidth() const{
+    return width;
+}
+
+int Config::getHeight() const {
+    return height;
+}
+int Config::getFps() const{
+    return fps;
+}
+
+std::string Config::getServerIp() const {
+    return server_ip;
+}
+int Config::getServerPort() const {
+    return server_port;
+}
+
+std::string Config::getHefPath() const {
+    return hef_path;
+}
+
+std::string Config::getSavePath() const{
+    return save_path;
+}
 void Config::readLoggerCfg(){
     std::ifstream file("../Sys_cfg.json");
     if(!file.is_open()){
@@ -11,11 +45,12 @@ void Config::readLoggerCfg(){
 
     auto& logger_json = j["Logger"];
 
-    this->width = logger_json.value("witdh", 640);
+    this->width = logger_json.value("width", 640);
     this->height = logger_json.value("height", 640);
     this->fps = logger_json.value("fps", 30);
 
     this->hef_path = logger_json.value("hef path", "../yolov8s.hef");
+    this->save_path = logger_json.value("save path", "../photo");
 
     this->server_ip = logger_json.value("Server IP addr", "127.0.0.1");
     this->server_port = logger_json.value("Server port", 8080);
@@ -25,6 +60,7 @@ void Config::readLoggerCfg(){
     std::cout << "[HEIGHT      : ] " << this->height << std::endl;
     std::cout << "[FPS         : ] " << this->fps << std::endl;
     std::cout << "[HEF_PATH    : ] " << this->hef_path<<std::endl;
+    std::cout << "[SAVE_PATH   : ] " << this->save_path<<std::endl;
     std::cout << "[SERVER_IP   : ] " << this->server_ip << std::endl;
     std::cout << "[SERVER_PORT : ] " << this->server_port << std::endl;
     std::cout << "===============================" << std::endl;
@@ -61,5 +97,9 @@ void Config::readLoggerCfg(){
         }
     } else {
         std::cout << "\n[입력 없음] 5초가 지나 자동으로 시작합니다." << std::endl;
+    }
+
+    if(input_received){
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
 }

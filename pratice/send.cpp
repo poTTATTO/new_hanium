@@ -1,6 +1,6 @@
 #include"send.hpp"
 
-SendWorker::SendWorker(SharedResourceManager& r) : res(r){}
+SendWorker::SendWorker(SharedResourceManager& r, Config& c) : res(r), cfg(c){}
 
 SendWorker::~SendWorker(){
     stop_thread = true;

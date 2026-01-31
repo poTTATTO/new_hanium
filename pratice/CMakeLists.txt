@@ -28,6 +28,7 @@ add_executable(hanium_test
     processing.hpp processing.cpp
     global_context.hpp global_context.cpp 
     config.hpp config.cpp
+    client.hpp client.cpp
 )
 
 target_include_directories(hanium_test PRIVATE 

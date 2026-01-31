@@ -17,6 +17,7 @@
 #include<sodium.h>
 #include"global_context.hpp"
 #include"config.hpp"
+#include"client.hpp"
 
 std::atomic<bool> g_running{true};
 
@@ -26,18 +27,22 @@ void signal_handler(int signal){
         g_running = false;
     }
 }
+
 int main(){
    std::signal(SIGINT, signal_handler);
 
+    auto& cfg = Config::getConfigInstance();
+    auto& gc = GlobalContext::getGlobalContextInstance();
 
-    std::string hef_path = "/home/cloud9/sangmin/new_hanium/pratice/yolov8s.hef";
-    init_dependencies();
+    Client client(cfg, gc);
+    client.sendPublicKey();
+
     SharedResourceManager res;
 
-    CaptureWorker capturer(res);
-    SaveWorker saver(res);
+    CaptureWorker capturer(res, cfg);
+    SaveWorker saver(res, cfg);
     ProcessingWorker processor(res);
-    InferenceWorker inferer(res, hef_path);
+    InferenceWorker inferer(res, cfg);
     
 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include"sharedResource.hpp"
+#include"config.hpp"
 #include<opencv2/core.hpp>
 #include<opencv2/imgcodecs.hpp>
 #include<opencv2/highgui.hpp>
@@ -14,11 +15,12 @@
 class SendWorker{
 private:
     SharedResourceManager& res;
+    Config& cfg;
     std::thread send_thread;
     bool stop_thread = false;
 
 public:
-    SendWorker(SharedResourceManager& r);
+    SendWorker(SharedResourceManager& r, Config& c);
     ~SendWorker();
     void start_worker();
     void send_task();

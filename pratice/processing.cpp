@@ -6,7 +6,7 @@ ProcessingWorker::ProcessingWorker(SharedResourceManager& r) : res(r), //zk()
     
     {
     if(sign_keypair(public_key.data(), secret_key.data()) == -1){
-        throw std::runtime_error("Sodium 초기화 실패로 생성 불가");
+        throw std::runtime_error("키 생성 불가");
     }
 
 }
@@ -37,7 +37,7 @@ void ProcessingWorker::process_task(){
     }
 }
 
-// 인자에서 const를 제거하고, 실제 버퍼 주소를 받도록 수정합니다 ㅋ
+
 int ProcessingWorker::sign_keypair(unsigned char* public_key, unsigned char* secret_key) {
 
     // 2. 인자 널 체크
@@ -47,23 +47,23 @@ int ProcessingWorker::sign_keypair(unsigned char* public_key, unsigned char* sec
     }
 
     // 3. 키 생성 및 결과 반환
-    // 성공 시 0, 실패 시 -1 반환 ㅋ
+    // 성공 시 0, 실패 시 -1 반환 
     int result = crypto_sign_keypair(public_key, secret_key);
     
     if (result != 0) {
         std::cerr << "[ERROR] 키 쌍 생성 중 알 수 없는 오류 발생!" << std::endl;
     } else {
-        std::cout << "[SUCCESS] libsodium 키 쌍 생성 완료 ㅋ" << std::endl;
+        std::cout << "[SUCCESS] libsodium 키 쌍 생성 완료 " << std::endl;
     }
 
     return result;
 }
 
 std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const cv::Mat& frame, const unsigned char* secret_key) {
-    // 1. 영상 가공 (libsodium 연산 전 데이터 전처리 ㅋ)
+    // 1. 영상 가공 (libsodium 연산 전 데이터 전처리 )
     if (frame.empty()) {
         std::cerr << "[Processing Error] 입력 프레임이 비어 있습니다!" << std::endl;
-        return {}; // 빈 결과 반환 ㅋ
+        return {}; // 빈 결과 반환 
     }
     cv::Mat gray;
     if (frame.channels() > 1) {
@@ -73,7 +73,7 @@ std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const cv::Mat&
     }
     if (!gray.isContinuous()) gray = gray.clone();
 
-    // 2. 해시 생성 (Ed25519 서명용 입력값 준비 ㅋ)
+    // 2. 해시 생성 (Ed25519 서명용 입력값 준비)
     std::vector<unsigned char> hash(crypto_generichash_BYTES);
     crypto_generichash(
         hash.data(), hash.size(),
@@ -81,7 +81,7 @@ std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const cv::Mat&
         NULL, 0
     );
 
-    // 3. 서명 연산 (Detached 방식 - 서명값만 생성 ㅋ)
+    // 3. 서명 연산 (Detached 방식 - 서명값만 생성)
     std::vector<unsigned char> signature(crypto_sign_BYTES);
     
     // 연산 성공 시 0 반환, 실패 시 -1 반환 
@@ -113,26 +113,26 @@ std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const cv::Mat&
 void ProcessingWorker::do_process(Long idx){
     Slot& slot = res.slot_pool[idx];
 
-    // 1. 무결성 확인 및 이미지 존재 여부 '이중 체크' ㅋ
+    // 1. 무결성 확인 및 이미지 존재 여부 '이중 체크' 
     if(slot.is_valid.load() && !slot.frame.empty()) {
         std::cout << "[Processing] Processing Slot : " << idx << std::endl;
         
-        
-        // 2. 연산 수행 ㅋ
+    
+        // 2. 연산 수행 
         std::vector<unsigned char> signature = sign_frame_libsodium(slot.frame, secret_key.data());
 
         if(signature.empty()) {
-            // 어느 한 스레드라도 문제 생기면 바로 폐기 처분 ㅋ
+            // 어느 한 스레드라도 문제 생기면 바로 폐기
             slot.is_valid.store(false);
             std::cout << "[" << slot.frame_id.load() << "] 서명 실패" << std::endl;
         } else {
-            // 결과 저장 ㅋ
+            // 결과 저장 
             slot.signature = signature; 
             std::cout << "[" << slot.frame_id.load() << "] 서명 성공" << std::endl;
-            // 이미 true이므로 상태 유지 ㅋ
+            // 이미 true이므로 상태 유지 
         }
     } else if (slot.frame.empty()) {
-        // 이 로그가 찍힌다면 캡처와 처리 사이의 동기화 순서가 여전히 꼬인 겁니다 ㅋ
+    
         std::cerr << "[CRITICAL] 슬롯 " << idx << " 가 유효하나 이미지가 비어있음!" << std::endl;
         slot.is_valid.store(false); 
     }
@@ -202,21 +202,21 @@ void ProcessingWorker::do_process(Long idx){
 
 // void ProcessingWorker::create_new_key(int slot) {
 //     try {
-//         // [1] zkClass 객체 생성 (생성자에서 zkOpen 자동 호출) ㅋ
+//         // [1] zkClass 객체 생성 (생성자에서 zkOpen 자동 호출) 
 //         zkAppUtils::zkClass zk;
 
 //         // [2] 키 생성 (타입은 헤더에 정의된 ZK_NISTP256 등 사용)
-//         // // 리턴값은 할당된 슬롯 번호입니다. ㅋ
+//         // // 리턴값은 할당된 슬롯 번호입니다. 
 //         // int allocated_slot = zk.genKeyPair(ZK_NISTP256);
 //         // std::cout << "성공: " << allocated_slot << "번 슬롯에 키 쌍 생성 완료!" << std::endl;
 
-//         // [3] 공개키 추출 (byteArray는 std::vector<uint8_t>의 별칭입니다 ㅋ)
+//         // [3] 공개키 추출 (byteArray는 std::vector<uint8_t>의 별칭입니다 )
 //         // 헤더 정의: zkAppUtils::byteArray* exportPubKey(int pubkey_slot = 0, bool slot_is_foreign = 0);
 //         zkAppUtils::byteArray* pubKeyPtr = zk.exportPubKey(slot, false);
 
 //         if (pubKeyPtr) {
 //             std::cout << "공개키 크기: " << pubKeyPtr->size() << " 바이트" << std::endl;
-//             // 사용이 끝나면 포인터이므로 delete 해줘야 합니다. (헤더 구조상 ㅋ)
+//             // 사용이 끝나면 포인터이므로 delete 해줘야 합니다. (헤더 구조상 )
 //             delete pubKeyPtr;
 //         }
 

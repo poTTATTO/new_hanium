@@ -6,7 +6,7 @@
 #include<fstream>
 #include<unistd.h>
 #include<sys/select.h> // select 시스템 콜을 위해 필요
-
+#include <limits>
 class Config{
 
 private:
@@ -18,17 +18,24 @@ private:
     int server_port;
 
     std::string hef_path;
+    std::string save_path;
+
+    Config();
+    Config(const Config&) = delete;
+    Config& operator=(const Config&) = delete;
 
 public:
+    static Config& getConfigInstance();
+
     int getWidth() const;
     int getHeight() const;
+    int getFps() const;
 
     std::string getServerIp() const;
     int getServerPort() const;
-
+    
     std::string getHefPath() const;
+    std::string getSavePath() const;
     void readLoggerCfg();
 
-    Config();
-    ~config();
 };

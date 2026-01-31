@@ -1,6 +1,6 @@
 #include"save.hpp"
 
-SaveWorker::SaveWorker(SharedResourceManager& r) : res(r){ }
+SaveWorker::SaveWorker(SharedResourceManager& r, Config& c) : res(r), cfg(c), save_path(cfg.getSavePath()){ }
 
 SaveWorker::~SaveWorker(){
     stop_thread = true;
@@ -37,7 +37,7 @@ void SaveWorker::do_save(Long idx){
             slot.mark_done(res.save_q, res.m_save, res.cv_save);
             return;
         }
-        std::string save_path = "/home/cloud9/sangmin/new_hanium/photo/ID_" + std::to_string(slot.frame_id) + ".jpg";
+        save_path = save_path + std::to_string(slot.frame_id) + ".jpg";
         if(!cv::imwrite(save_path, slot.frame)){
             slot.is_valid = false;
             std::cout<<"["<<slot.frame_id<<"]"<<"저장 실패"<<std::endl;

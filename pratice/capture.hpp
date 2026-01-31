@@ -5,6 +5,7 @@
 #include<opencv2/opencv.hpp>
 #include"capture.hpp"
 #include"sharedResource.hpp"
+#include"config.hpp"
 #include<thread>
 #include<cerrno>
 #include<atomic>
@@ -14,6 +15,7 @@
 class CaptureWorker{
 private:    
     SharedResourceManager& res;
+    Config& cfg;
     std::thread capture_thread;
     bool stop_thread = false;
 
@@ -21,7 +23,7 @@ public:
     cv::VideoCapture cap;
     std::atomic<Long> frame_id;
 
-    CaptureWorker(SharedResourceManager& r);
+    CaptureWorker(SharedResourceManager& r, Config& c);
     // ~CaptureWorker();
     void start_worker();
     void capture_task();
