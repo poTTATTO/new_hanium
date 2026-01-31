@@ -53,7 +53,6 @@ public:
 
     // Capture 스레드가 호출: 세 개의 큐에 인덱스를 동시에 배분
     SharedResourceManager();
-    void distribute_task(Long idx);
     void distribute_task_to_save(Long idx);
     void distribute_task_to_proc(Long idx);
     void distribute_task_to_inf(Long idx);

@@ -1,3 +1,4 @@
+#pragma once
 #include<sodium.h>
 #include <curlpp/cURLpp.hpp>  // 전역 초기화용
 #include <curlpp/Easy.hpp>     // 실제 전송용 (Easy handle)
@@ -11,6 +12,8 @@ public:
     static GlobalContext& getGlobalContextInstance();
     const std::vector<unsigned char>& getPublicKey() const;
     const std::vector<unsigned char>& getPrivateKey() const;
+    GlobalContext(const GlobalContext& other) = delete;
+    GlobalContext& operator=(const GlobalContext& other) = delete;
 
 private:
     int signKeyPair(unsigned char* public_key, unsigned char* private_key);
@@ -18,5 +21,6 @@ private:
     ~GlobalContext();
     std::vector<unsigned char> public_key;
     std::vector<unsigned char> private_key;
+    curlpp::Cleanup my_cleanup;
 
 };

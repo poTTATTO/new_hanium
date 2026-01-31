@@ -15,8 +15,9 @@
 #include"processing.hpp"
 #include"inference.hpp"
 #include<sodium.h>
- 
-void init_dependencies();
+#include"global_context.hpp"
+#include"config.hpp"
+
 std::atomic<bool> g_running{true};
 
 void signal_handler(int signal){
@@ -28,9 +29,7 @@ void signal_handler(int signal){
 int main(){
    std::signal(SIGINT, signal_handler);
 
-//    auto start_time = std::chrono::steady_clock::now();
 
-//    while(std::chrono::steady_clock::now() - start_time < std::chrono::seconds(20)){
     std::string hef_path = "/home/cloud9/sangmin/new_hanium/pratice/yolov8s.hef";
     init_dependencies();
     SharedResourceManager res;
@@ -65,12 +64,4 @@ int main(){
 }
 
 
-
-void init_dependencies(){
-    if(sodium_init()<0){
-        throw std::runtime_error("Sodium init failed");
-    }
-    curlpp::initialize();
-    std::cout<<"library(sodium, curlpp) init complete"<<std::endl;
-}
 

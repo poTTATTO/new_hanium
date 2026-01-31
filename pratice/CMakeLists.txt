@@ -26,7 +26,8 @@ add_executable(hanium_test
     inference.hpp inference.cpp 
     send.cpp send.hpp
     processing.hpp processing.cpp
-    
+    global_context.hpp global_context.cpp 
+    config.hpp config.cpp
 )
 
 target_include_directories(hanium_test PRIVATE 

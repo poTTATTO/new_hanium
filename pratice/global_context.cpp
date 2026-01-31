@@ -1,19 +1,28 @@
 #include"global_context.hpp"
 
 GlobalContext::GlobalContext(){
-    if(sodium_init < 0) throw std::runtime_error("sodium_init 실패");
-    public_key(crypto_sign_PUBLICKEYBYTES);
-    secret_key(crypto_sign_SECRETKEYBYTES);
+    if(sodium_init() < 0) throw std::runtime_error("sodium_init 실패");
+    public_key.resize(crypto_sign_PUBLICKEYBYTES);
+    private_key.resize(crypto_sign_SECRETKEYBYTES);
 
     if(signKeyPair(public_key.data(), private_key.data()) == -1){
         throw std::runtime_error("sodium 키 생성 실패");
     }
     
-        
+    try{
+        curlpp::initialize();
+    }catch (const std::exception& e){
+        throw std::runtime_error(std::string("curlpp_init failed : ") + e.what());
+    }
+    
+    std::cout<<"--- 전역 자원 초기화 성공 ---"<<std::endl;
 }
 
+GlobalContext::~GlobalContext(){
 
-static GlobalContext::getGlobalContextInstance{
+}
+
+static GlobalContext& GlobalContext::getGlobalContextInstance(){
     static GlobalContext instance;
     return instance;
 }
