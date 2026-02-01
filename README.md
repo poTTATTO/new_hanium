@@ -16,3 +16,27 @@ With the rapid growth of Digital Transformation, data pollution has become a cri
 ### 3. nlohmann/json over jsoncpp
 - **Decision**: nlohmann/json (Modern C++ JSON).
 - **Why**: Its header-only nature simplifies the cross-compilation process for ARM-based devices. The intuitive, STL-like syntax also improves code readability and reduces development time.
+
+
+## 🏗 System Architecture
+The application implements a **Stage-based Pipeline Parallelism** to maximize throughput on multi-core CPUs.
+
+
+
+
+
+
+### Prerequisites
+- **C++ Standard** : C++17 (GCC 12.2.0)
+- **OpenCV** : 4.10.0
+- **HailoRT** : 4.19.0 (API)
+- **libsodium** : 1.0.18
+- **libcurlpp** : 0.8.1
+- **nlohmann-json** : 3.11.2
+
+### Build
+```bash
+mkdir build && cd build
+cmake ..
+make -j$(nproc)
+
