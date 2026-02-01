@@ -3,3 +3,6 @@ build/
 bin/
 *.o
 *.out
+*.log
+testcode
+hailo_test
