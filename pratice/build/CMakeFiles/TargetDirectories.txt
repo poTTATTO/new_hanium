@@ -1,3 +1,0 @@
-/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles/hanium_test.dir
-/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles/edit_cache.dir
-/home/cloud9/sangmin/new_hanium/pratice/build/CMakeFiles/rebuild_cache.dir
