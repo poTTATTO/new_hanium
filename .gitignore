@@ -4,5 +4,5 @@ bin/
 *.o
 *.out
 *.log
-testcode
-hailo_test
+testcode/
+hailo_test/
