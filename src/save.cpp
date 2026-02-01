@@ -37,8 +37,9 @@ void SaveWorker::do_save(Long idx){
             slot.mark_done(res.save_q, res.m_save, res.cv_save);
             return;
         }
-        save_path = save_path + std::to_string(slot.frame_id) + ".jpg";
-        if(!cv::imwrite(save_path, slot.frame)){
+        std::string save_full_path;
+        save_full_path = save_path + std::to_string(slot.frame_id) + ".jpg";
+        if(!cv::imwrite(save_full_path, slot.frame)){
             slot.is_valid = false;
             std::cout<<"["<<slot.frame_id<<"]"<<"저장 실패"<<std::endl;
         }else{

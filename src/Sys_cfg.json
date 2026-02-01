@@ -8,7 +8,7 @@
         "Server IP addr"    : "192.168.219.104",
         "Server port"       : 8000,
 
-        "hef path"          : "/home/cloud9/sangmin/new_hanium/pratice/yolov8s.hef",
+        "hef path"          : "/home/cloud9/sangmin/new_hanium/src/yolov8s.hef",
         "save path"         : "/home/cloud9/sangmin/new_hanium/photo/ID_"
         
     }
