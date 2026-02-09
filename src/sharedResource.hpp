@@ -31,7 +31,9 @@ public:
     alignas(std::hardware_destructive_interference_size) std::atomic<bool> is_occupied{false};
     alignas(std::hardware_destructive_interference_size) std::atomic<bool> is_valid{true};
     cv::Mat frame;
+
     std::vector<unsigned char> signature;
+    std::vector<unsigned char> hash;
     std::string detection_result;
     // zkAppUtils::byteArray signature;
     
@@ -43,7 +45,7 @@ public:
     void clear();
 };
 
-class SharedResourceManager {
+class SharedResourceManager {;
 public:    
     Slot slot_pool[SLOT_POOL_SIZE];
     // 각 작업자용 큐와 동기화 도구들

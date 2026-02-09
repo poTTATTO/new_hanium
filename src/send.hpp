@@ -11,6 +11,7 @@
 #include <curlpp/Easy.hpp>     // 실제 전송용 (Easy handle)
 #include <curlpp/Options.hpp>  // URL, PostFields 등 옵션 설정용
 #include<string>
+#include"util.hpp"
 
 class SendWorker{
 private:

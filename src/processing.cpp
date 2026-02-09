@@ -1,13 +1,16 @@
 #include"processing.hpp"
 
-ProcessingWorker::ProcessingWorker(SharedResourceManager& r) : res(r), //zk()
+ProcessingWorker::ProcessingWorker(SharedResourceManager& r) : res(r), gc(gc)//zk()
     public_key(crypto_sign_PUBLICKEYBYTES), 
-    secret_key(crypto_sign_SECRETKEYBYTES)
+    private_key(crypto_sign_SECRETKEYBYTES),
+    public_key(gc.getPublicKey());
+    private_key(gc.getPrivateKey());
+    
     
     {
-    if(sign_keypair(public_key.data(), secret_key.data()) == -1){
-        throw std::runtime_error("키 생성 불가");
-    }
+    // if(sign_keypair(public_key.data(), secret_key.data()) == -1){
+    //     throw std::runtime_error("키 생성 불가");
+    // }
 
 }
 
@@ -38,17 +41,17 @@ void ProcessingWorker::process_task(){
 }
 
 
-int ProcessingWorker::sign_keypair(unsigned char* public_key, unsigned char* secret_key) {
+int ProcessingWorker::sign_keypair(unsigned char* public_key, unsigned char* private_key) {
 
     // 2. 인자 널 체크
-    if (public_key == nullptr || secret_key == nullptr) {
+    if (public_key == nullptr || private_key == nullptr) {
         std::cerr << "[ERROR] 키 저장 공간이 유효하지 않습니다." << std::endl;
         return -1;
     }
 
     // 3. 키 생성 및 결과 반환
-    // 성공 시 0, 실패 시 -1 반환 
-    int result = crypto_sign_keypair(public_key, secret_key);
+    // 성공 시 0, 실패 시 -1  반환 
+    int result = crypto_sign_keypair(public_key, private_key);
     
     if (result != 0) {
         std::cerr << "[ERROR] 키 쌍 생성 중 알 수 없는 오류 발생!" << std::endl;
@@ -59,33 +62,40 @@ int ProcessingWorker::sign_keypair(unsigned char* public_key, unsigned char* sec
     return result;
 }
 
-std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const cv::Mat& frame, const unsigned char* secret_key) {
-    // 1. 영상 가공 (libsodium 연산 전 데이터 전처리 )
+std::vector<unsigned char> ProcessingWorker::hash_frame_libsodium(const cv::Mat& frame){
+    // 1. 이미지 확인
     if (frame.empty()) {
         std::cerr << "[Processing Error] 입력 프레임이 비어 있습니다!" << std::endl;
         return {}; // 빈 결과 반환 
     }
-    cv::Mat gray;
-    if (frame.channels() > 1) {
-        cv::cvtColor(frame, gray, cv::COLOR_BGR2GRAY);
-    } else {
-        gray = frame;
-    }
-    if (!gray.isContinuous()) gray = gray.clone();
-
+       
+    std::vector<unsigned char> zipped_img = Uill::zipping_image_to_bin(frame);
     // 2. 해시 생성 (Ed25519 서명용 입력값 준비)
     std::vector<unsigned char> hash(crypto_generichash_BYTES);
-    crypto_generichash(
+    int result = crypto_generichash(
         hash.data(), hash.size(),
-        gray.data, gray.total() * gray.elemSize(),
+        zipped_img.data(), zipped_img.size(),
         NULL, 0
     );
 
+    if(result != 0){
+        return {};
+    }else{
+        return hash;
+    }
+
+}
+
+std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const std::vector<unsgined char>& hash, const unsigned char* private_key) {
+     
+    if(hash.empty()){
+        return {};
+    }
     // 3. 서명 연산 (Detached 방식 - 서명값만 생성)
     std::vector<unsigned char> signature(crypto_sign_BYTES);
     
     // 연산 성공 시 0 반환, 실패 시 -1 반환 
-    if (crypto_sign_detached(signature.data(), NULL, hash.data(), hash.size(), secret_key) != 0) {
+    if (crypto_sign_detached(signature.data(), NULL, hash.data(), hash.size(), private_key) != 0) {
         std::cerr << "[ERROR] 서명 연산 실패!" << std::endl;
         return {}; // 빈 벡터 반환 
     }
@@ -93,23 +103,7 @@ std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const cv::Mat&
     return signature;
 }
 
-// void ProcessingWorker::do_process(Long idx){
-//    Slot& slot = res.slot_pool[idx];
-//    if(slot.is_valid){
-//         std::cout<<"[Processing] Processing Slot : "<<idx<<std::endl;
-//         std::vector<unsigned char> signature = sign_frame_libsodium(slot.frame, secret_key.data());
 
-//         if(signature.empty()) {
-//             slot.is_valid = false;
-//             std::cout<<"["<<slot.frame_id<<"]"<<"서명 실패"<<std::endl;
-//         }else{
-//             slot.signature = signature;
-//             std::cout<<"["<<slot.frame_id<<"]"<<"서명 성공"<<std::endl;
-//             slot.is_valid.store(true);
-//         }
-//    }
-//    slot.mark_done(res.processing_q, res.m_proc, res.cv_proc);
-// }
 void ProcessingWorker::do_process(Long idx){
     Slot& slot = res.slot_pool[idx];
 
@@ -119,16 +113,21 @@ void ProcessingWorker::do_process(Long idx){
         
     
         // 2. 연산 수행 
-        std::vector<unsigned char> signature = sign_frame_libsodium(slot.frame, secret_key.data());
-
-        if(signature.empty()) {
+        std::vector<unsigned char> hash = hash_frame_libsodium(slot.frame);
+        
+        std::vector<unsigned char> signature = sign_frame_libsodium(hash, private_key.data());
+        if(hash.empty()){
+            slot.is_valid.store(false);
+            std::cout<<"["<<slot.frame_id.load()<<"] 해싱 실패"<<std::endl;
+        }else if(signature.empty()) {
             // 어느 한 스레드라도 문제 생기면 바로 폐기
             slot.is_valid.store(false);
             std::cout << "[" << slot.frame_id.load() << "] 서명 실패" << std::endl;
         } else {
             // 결과 저장 
             slot.signature = signature; 
-            std::cout << "[" << slot.frame_id.load() << "] 서명 성공" << std::endl;
+            slot.hash = hash;
+            std::cout << "[" << slot.frame_id.load() << "] 서명, 해싱 성공" << std::endl;
             // 이미 true이므로 상태 유지 
         }
     } else if (slot.frame.empty()) {
@@ -225,4 +224,22 @@ void ProcessingWorker::do_process(Long idx){
 //     } catch (const std::exception& e) {
 //         std::cerr << "기타 에러: " << e.what() << std::endl;
 //     }
+// }
+
+// void ProcessingWorker::do_process(Long idx){
+//    Slot& slot = res.slot_pool[idx];
+//    if(slot.is_valid){
+//         std::cout<<"[Processing] Processing Slot : "<<idx<<std::endl;
+//         std::vector<unsigned char> signature = sign_frame_libsodium(slot.frame, secret_key.data());
+
+//         if(signature.empty()) {
+//             slot.is_valid = false;
+//             std::cout<<"["<<slot.frame_id<<"]"<<"서명 실패"<<std::endl;
+//         }else{
+//             slot.signature = signature;
+//             std::cout<<"["<<slot.frame_id<<"]"<<"서명 성공"<<std::endl;
+//             slot.is_valid.store(true);
+//         }
+//    }
+//    slot.mark_done(res.processing_q, res.m_proc, res.cv_proc);
 // }

@@ -8,6 +8,7 @@
 #include<condition_variable>
 #include"sharedResource.hpp"
 #include"config.hpp"
+#include<nlohmann/json.hpp>
 
 class SaveWorker{
 private:

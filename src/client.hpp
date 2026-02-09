@@ -9,6 +9,7 @@
 #include<cerrno>
 #include"config.hpp"
 #include"global_context.hpp"
+#include"util.hpp"
 
 class Client{
 private:

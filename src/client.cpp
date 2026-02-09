@@ -15,8 +15,8 @@ std::string Client::buildUrl(const std::string& endpoint){
 bool Client::sendPublicKey(){
     try{
 
-        const auto& pubKeyVec = gc.getPublicKey();
-        std::string key_str(pubKeyVec.begin(), pubKeyVec.end());
+        const auto& pub_key_vec = gc.getPublicKey();
+        std::string key_str = to_base64(pub_key_vec);
 
         // 1. Easy 핸들 생성
         curlpp::Easy request;

@@ -8,8 +8,6 @@ void Slot::mark_done(std::queue<Long>& send_q, std::mutex& mtx, std::condition_v
             {
                 std::lock_guard<std::mutex> lock(mtx);
                 send_q.push(id);
-                is_valid.store(false);
-                is_occupied.store(false);
             }
             cv.notify_one();
         }
@@ -18,7 +16,7 @@ void Slot::mark_done(std::queue<Long>& send_q, std::mutex& mtx, std::condition_v
 void Slot::clear(){
         is_occupied.store(false);
         frame_id.store(0);
-        is_valid.store(true);
+        is_valid.store(false);
         frame.release();
         tasks_left.store(3);
 }
