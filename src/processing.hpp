@@ -21,8 +21,8 @@ private:
     // zkAppUtils::zkClass zk;
     std::thread process_thread;
     bool stop_thread = false; 
-    std::vector<unsigned char> public_key;
-    std::vector<unsigned char> private_key;
+    const std::vector<unsigned char>& public_key;
+    const std::vector<unsigned char>& private_key;
 
 public:
     ProcessingWorker(SharedResourceManager& r, GlobalContext& gc);

@@ -5,7 +5,7 @@
         "height"            : 640,
         "fps"               : 30,
 
-        "Server IP addr"    : "192.168.219.104",
+        "Server IP addr"    : "192.168.0.29",
         "Server port"       : 8000,
 
         "hef path"          : "/home/cloud9/sangmin/new_hanium/src/yolov8s.hef",

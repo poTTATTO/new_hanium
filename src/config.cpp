@@ -7,6 +7,7 @@ Config& Config::getConfigInstance(){
 
 Config::Config(){
     readLoggerCfg();
+    BuilServerUrl();
 }
     
 int Config::getWidth() const{
@@ -33,6 +34,13 @@ std::string Config::getHefPath() const {
 
 std::string Config::getSavePath() const{
     return save_path;
+}
+std::string Config::getServerUrl() const{
+    return server_url;
+}
+
+void Config::BuilServerUrl() {
+    server_url = "http://" + server_ip + ":" + std::to_string(server_port);
 }
 void Config::readLoggerCfg(){
     std::ifstream file("../Sys_cfg.json");

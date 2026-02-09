@@ -15,9 +15,6 @@ class Client{
 private:
     Config& cfg;
     GlobalContext& gc;
-    std::string server_ip;
-    int server_port;
-
     std::string buildUrl(const std::string& endpoint);
 
     

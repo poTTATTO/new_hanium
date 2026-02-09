@@ -20,6 +20,8 @@ private:
     std::string hef_path;
     std::string save_path;
 
+    std::string server_url;
+
     Config();
     Config(const Config&) = delete;
     Config& operator=(const Config&) = delete;
@@ -33,6 +35,8 @@ public:
 
     std::string getServerIp() const;
     int getServerPort() const;
+    void BuilServerUrl();
+    std::string getServerUrl() const;
     
     std::string getHefPath() const;
     std::string getSavePath() const;

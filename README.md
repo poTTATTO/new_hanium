@@ -1,3 +1,5 @@
+# 미완성임 
+#=============================================================================================================
 # Logger for Data Integrity and Authenticity
 
 With the rapid growth of Digital Transformation, data pollution has become a critical threat to decision-making and AI reliability. Our Secure Logger addresses this by establishing data integrity and authenticity at the point of capture, ensuring a high-trust pipeline for cloud-based data analytics.
@@ -40,3 +42,9 @@ mkdir build && cd build
 cmake ..
 make -j$(nproc)
 
+### Use
+
+cd /home/sangmin/new_hanium/src/build
+./hanium_test
+
+#=============================================================================================================

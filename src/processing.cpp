@@ -1,16 +1,14 @@
 #include"processing.hpp"
 
-ProcessingWorker::ProcessingWorker(SharedResourceManager& r) : res(r), gc(gc)//zk()
-    public_key(crypto_sign_PUBLICKEYBYTES), 
-    private_key(crypto_sign_SECRETKEYBYTES),
-    public_key(gc.getPublicKey());
-    private_key(gc.getPrivateKey());
-    
+ProcessingWorker::ProcessingWorker(SharedResourceManager& r, GlobalContext& gc) : res(r), gc(gc),//zk()
+    public_key(gc.getPublicKey()), 
+    private_key(gc.getPrivateKey())
     
     {
     // if(sign_keypair(public_key.data(), secret_key.data()) == -1){
     //     throw std::runtime_error("키 생성 불가");
     // }
+    
 
 }
 
@@ -69,7 +67,7 @@ std::vector<unsigned char> ProcessingWorker::hash_frame_libsodium(const cv::Mat&
         return {}; // 빈 결과 반환 
     }
        
-    std::vector<unsigned char> zipped_img = Uill::zipping_image_to_bin(frame);
+    std::vector<unsigned char> zipped_img = Util::zipping_image_to_bin(frame);
     // 2. 해시 생성 (Ed25519 서명용 입력값 준비)
     std::vector<unsigned char> hash(crypto_generichash_BYTES);
     int result = crypto_generichash(
@@ -86,7 +84,7 @@ std::vector<unsigned char> ProcessingWorker::hash_frame_libsodium(const cv::Mat&
 
 }
 
-std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const std::vector<unsgined char>& hash, const unsigned char* private_key) {
+std::vector<unsigned char> ProcessingWorker::sign_frame_libsodium(const std::vector<unsigned char>& hash, const unsigned char* private_key) {
      
     if(hash.empty()){
         return {};

@@ -3,20 +3,18 @@
 
 
 Client::Client(Config& c, GlobalContext& g) : 
-    cfg(c), gc(g), 
-    server_ip(cfg.getServerIp()), server_port(cfg.getServerPort()){
+    cfg(c), gc(g){
 
     }
 
 std::string Client::buildUrl(const std::string& endpoint){
-    return "http://" + server_ip + ":" + std::to_string(server_port) + endpoint;
+    return cfg.getServerUrl() + endpoint;
 }
 
 bool Client::sendPublicKey(){
     try{
 
-        const auto& pub_key_vec = gc.getPublicKey();
-        std::string key_str = to_base64(pub_key_vec);
+        std::string key_str = Util::to_base64(gc.getPublicKey());
 
         // 1. Easy 핸들 생성
         curlpp::Easy request;
@@ -51,7 +49,12 @@ bool Client::sendPublicKey(){
         return false;
     }
     } catch (const std::exception& e){
-        std::cerr <<"[Network Error] " << e.what() <<std::endl;
+        std::cerr <<"[Network Error] 일반 에러" << e.what() <<std::endl;
+        throw std::runtime_error("키 전송 실패 | 시스템 종료");
+        return false;
+    } catch (const curlpp::LibcurlRuntimeError& e){
+        std::cerr<<"[Netword Error] curlpp 에러 : "<<e.what()<<std::endl;
+        throw std::runtime_error("키 전송 실패 | 시스템 종료");
         return false;
     }
     

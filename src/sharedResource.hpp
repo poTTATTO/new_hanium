@@ -13,7 +13,7 @@
 #include<zk_app_utils.h>
 #include<zk_b64.h>
 #include<new>
-#define SLOT_POOL_SIZE 1500
+#define SLOT_POOL_SIZE 2000
 typedef long long Long;
 
 struct Detection{

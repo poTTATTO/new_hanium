@@ -2,10 +2,15 @@
 #include<sodium.h>
 #include<vector>
 #include<string>
-
+#include<string>
+#include<chrono>
+#include<opencv2/core.hpp>
+#include<opencv2/imgcodecs.hpp>
+#include<opencv2/highgui.hpp>
+#include<opencv2/opencv.hpp>
 namespace Util
 {
-    inline std::string to_base64_sodium(const std::vector<unsigned char>& data){
+    inline std::string to_base64(const std::vector<unsigned char>& data){
         if(data.empty()) return "";
         
         size_t out_len = sodium_base64_ENCODED_LEN(data.size(), sodium_base64_VARIANT_ORIGINAL);
@@ -23,7 +28,7 @@ namespace Util
         }
         std::vector<unsigned char> buf;
         static const std::vector<int> params = {cv::IMWRITE_JPEG_QUALITY, 90};
-        bool sucess = cv::imencode(".jpg", img, buf, params);
+        bool success = cv::imencode(".jpg", img, buf, params);
 
         if(!success || buf.empty()){
             return {};
@@ -34,7 +39,7 @@ namespace Util
     }
 
     inline std::string to_hex(const std::vector<unsigned char>& data){
-        static const char hex_chars[] = "0123456789abc";
+        static const char hex_chars[] = "0123456789abcdef";
 
         std::string hex_str;
         hex_str.reserve(data.size() * 2);
@@ -46,4 +51,13 @@ namespace Util
 
         return hex_str;
     }
+
+    inline long long get_current_timestamp(){
+        auto now = std::chrono::system_clock::now();
+
+        auto duration = now.time_since_epoch();
+
+        return std::chrono::duration_cast<std::chrono::seconds>(duration).count();
+    }
+
 } 
