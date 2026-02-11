@@ -19,11 +19,10 @@ private:
     Config& cfg;
     std::thread capture_thread;
     bool stop_thread = false;
-
-public:
     cv::VideoCapture cap;
     std::atomic<Long> frame_id;
-
+public:
+    
     CaptureWorker(SharedResourceManager& r, Config& c);
     ~CaptureWorker();
     void start_worker();

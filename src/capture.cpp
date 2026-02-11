@@ -5,6 +5,7 @@ CaptureWorker::CaptureWorker(SharedResourceManager& r, Config& c) : res(r), cfg(
         std::cerr<<"카메라를 찾을 수 없음."<<std::endl;
     }
 
+    cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('Y', 'U', 'Y', 'V'));
     cap.set(cv::CAP_PROP_FRAME_WIDTH, cfg.getWidth());
     cap.set(cv::CAP_PROP_FRAME_HEIGHT, cfg.getHeight());
     cap.set(cv::CAP_PROP_FPS, cfg.getFps()); 
@@ -28,9 +29,8 @@ void CaptureWorker::capture_task(){
     while(keep_running){
         if(stop_thread || !keep_running) break;
         cv::Mat frame;
-        cap >> frame;
 
-        if(frame.empty()){
+        if(!do_capture(frame)){
             std::cerr<<"프레임이 비었습니다."<<std::endl;
             continue;
         }
@@ -51,7 +51,14 @@ void CaptureWorker::capture_task(){
     std::this_thread::yield();
 }
 
-void CaptureWorker::do_capture(){
+bool CaptureWorker::do_capture(cv::Mat& frame){
+    cap >> frame;
+
+    if(frame.empty()){
+        return false;
+    }
+
+    return true;
 }
 
 void CaptureWorker::slot_init(Long idx, cv::Mat& frame){
