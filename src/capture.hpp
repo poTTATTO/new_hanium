@@ -27,6 +27,6 @@ public:
     ~CaptureWorker();
     void start_worker();
     void capture_task();
-    void do_capture();
+    bool do_capture(cv::Mat& frame);
     void slot_init(Long idx, cv::Mat& frame);
 };
