@@ -6,6 +6,7 @@ SaveWorker::~SaveWorker(){
     stop_thread = true;
     res.cv_save.notify_all();
     if(save_thread.joinable()) save_thread.join();
+    std::cout<<"Save Thread Destructor"<<std::endl;
 }
 
 void SaveWorker::start_worker(){
@@ -13,18 +14,20 @@ void SaveWorker::start_worker(){
 }
 void SaveWorker::save_task(){
     pthread_setname_np(pthread_self(), "Save_Thread");
-    while(true){
+    while(keep_running){
         Long idx;
         {
             std::unique_lock<std::mutex> lock(res.m_save);
-            res.cv_save.wait(lock, [this] {return !res.save_q.empty() || stop_thread;});
-            if(stop_thread && res.save_q.empty()) break;
+            res.cv_save.wait(lock, [this] {return !res.save_q.empty() || stop_thread || !keep_running;});
+            if((stop_thread || !keep_running) && res.save_q.empty()) break;
             idx = res.save_q.front();
             res.save_q.pop();
         }
 
         do_save(idx);
     }
+
+    std::this_thread::yield();
 }
 
 void SaveWorker::do_save(Long idx){

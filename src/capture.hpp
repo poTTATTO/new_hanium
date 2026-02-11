@@ -9,7 +9,8 @@
 #include<thread>
 #include<cerrno>
 #include<atomic>
-
+#include <csignal>
+extern volatile std::sig_atomic_t keep_running; 
 #define TEST_COUNT 3
 
 class CaptureWorker{
@@ -24,7 +25,7 @@ public:
     std::atomic<Long> frame_id;
 
     CaptureWorker(SharedResourceManager& r, Config& c);
-    // ~CaptureWorker();
+    ~CaptureWorker();
     void start_worker();
     void capture_task();
     void do_capture();

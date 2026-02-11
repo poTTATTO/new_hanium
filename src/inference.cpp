@@ -44,6 +44,7 @@ InferenceWorker::~InferenceWorker(){
     stop_thread = true;
     res.cv_inf.notify_all();
     if(inference_thread.joinable()) inference_thread.join();
+    std::cout<<"Inference Thread Destructor"<<std::endl;
 }
 
 void InferenceWorker::start_worker(){
@@ -52,17 +53,18 @@ void InferenceWorker::start_worker(){
 
 void InferenceWorker::inference_task(){
     pthread_setname_np(pthread_self(), "Inference Thread");
-    while(true){
+    while(keep_running){
         Long idx;
         {
             std::unique_lock<std::mutex> lock(res.m_inf);
-            res.cv_inf.wait(lock, [this] {return !res.inference_q.empty() || stop_thread; });
-            if(stop_thread && res.inference_q.empty()) break;
+            res.cv_inf.wait(lock, [this] {return !res.inference_q.empty() || stop_thread || !keep_running; });
+            if((stop_thread || !keep_running) && res.inference_q.empty()) break;
             idx = res.inference_q.front();
             res.inference_q.pop();
         }
         do_inference(idx);
     }
+    std::this_thread::yield();
 }
 
 
@@ -98,10 +100,15 @@ void InferenceWorker::do_inference(Long idx){
             std::cout << "--- 탐지 결과 (" << detection.size() << "건) ---" << std::endl;
             
             for (const auto& det : detection) {
-                std::cout << "[Class]: " << det.cls 
-                        << " [Prob]: " << det.prob 
-                        << " [BBox]: [" << det.bbox[0] << ", " << det.bbox[1] << ", " 
-                        << det.bbox[2] << ", " << det.bbox[3] << "]" << std::endl;
+                std::cout << std::left // 왼쪽 정렬
+                    << "[Class]: "  << std::setw(2)  << det.cls 
+                    << " [Object]: " << std::setw(10) << COCO_LABELS[det.cls]
+                    << " [Prob]: "   << std::fixed << std::setprecision(2) << std::setw(6) << det.prob 
+                    << " [BBox]: ["  << std::setw(4) << det.bbox[0] << ", " 
+                                    << std::setw(4) << det.bbox[1] << ", " 
+                                    << std::setw(4) << det.bbox[2] << ", " 
+                                    << std::setw(4) << det.bbox[3] << "]" 
+                    << std::endl;
             }
             std::cout << "---------------------------" << std::endl;
         }
@@ -147,7 +154,7 @@ std::vector<Detection> InferenceWorker::parse_to_list(){
     return current_detections;
 }
 
-std::string InferenceWorker::convert_to_json_string(const std::vector<Detection>& detections) {
+nlohmann::json InferenceWorker::convert_to_json_string(const std::vector<Detection>& detections) {
     // 1. 최상위 객체를 배열(Array) 형식으로 선언 
     nlohmann::json j_array = nlohmann::json::array();
 
@@ -168,5 +175,5 @@ std::string InferenceWorker::convert_to_json_string(const std::vector<Detection>
     }
 
     // 실전 전송 시에는 dump()만 써서 한 줄로 
-    return j_array.dump();
+    return j_array;
 }

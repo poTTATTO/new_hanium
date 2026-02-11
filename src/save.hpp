@@ -9,6 +9,8 @@
 #include"sharedResource.hpp"
 #include"config.hpp"
 #include<nlohmann/json.hpp>
+#include <csignal>
+extern volatile std::sig_atomic_t keep_running; 
 
 class SaveWorker{
 private:

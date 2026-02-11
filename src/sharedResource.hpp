@@ -13,6 +13,8 @@
 #include<zk_app_utils.h>
 #include<zk_b64.h>
 #include<new>
+#include<nlohmann/json.hpp>
+
 #define SLOT_POOL_SIZE 2000
 typedef long long Long;
 
@@ -34,7 +36,7 @@ public:
 
     std::vector<unsigned char> signature;
     std::vector<unsigned char> hash;
-    std::string detection_result;
+    nlohmann::json detection_result;
     // zkAppUtils::byteArray signature;
     
 

@@ -15,7 +15,8 @@
 #include<string>
 #include"util.hpp"
 #include<vector>
-
+#include <csignal>
+extern volatile std::sig_atomic_t keep_running; 
 
 class SendWorker{
 private:

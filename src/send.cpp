@@ -9,6 +9,7 @@ SendWorker::~SendWorker(){
     stop_thread = true;
     res.cv_send.notify_all();
     if(send_thread.joinable()) send_thread.join();
+    std::cout<<"Send Thread Destructor"<<std::endl;
 }
 void SendWorker::start_worker(){
     send_thread = std::thread([this] {send_task();});
@@ -17,17 +18,18 @@ void SendWorker::start_worker(){
 
 void SendWorker::send_task(){
     pthread_setname_np(pthread_self(), "Send Thread");
-    while(true){
+    while(keep_running){
         Long idx;
         {
             std::unique_lock<std::mutex> lock(res.m_send);
-            res.cv_send.wait(lock, [this] {return !res.send_q.empty();});
-            if(stop_thread && res.send_q.empty()) break;
+            res.cv_send.wait(lock, [this] {return !res.send_q.empty() || stop_thread || !keep_running;});
+            if((stop_thread || !keep_running)&& res.send_q.empty()) break;
             idx = res.send_q.front();
             res.send_q.pop();
         }
         do_send(idx);
     }
+    std::this_thread::yield();
 
 }
 
@@ -117,6 +119,6 @@ std::string SendWorker::create_packet(Long idx, Slot& slot){
       { "label": "car", "confidence": 0.85, "box": [150, 50, 300, 400] }
     ]
   },
-  "payload": "iVBORw0KGgoAAAANSUhEUgAA..." //base64로 인코딩됨
+  "image": "iVBORw0KGgoAAAANSUhEUgAA..." //base64로 인코딩됨
 }
 */

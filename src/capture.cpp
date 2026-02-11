@@ -10,6 +10,14 @@ CaptureWorker::CaptureWorker(SharedResourceManager& r, Config& c) : res(r), cfg(
     cap.set(cv::CAP_PROP_FPS, cfg.getFps()); 
 }
 
+CaptureWorker::~CaptureWorker(){
+    stop_thread = true;
+
+    if(capture_thread.joinable()){
+        capture_thread.join();
+    }
+    std::cout<<"Capture Thread Destructor"<<std::endl;
+}
 void CaptureWorker::start_worker(){
     capture_thread = std::thread([this] {capture_task();});
 }
@@ -17,7 +25,8 @@ void CaptureWorker::start_worker(){
 void CaptureWorker::capture_task(){
     pthread_setname_np(pthread_self(),"Capture_Thread");
 
-    while(true){
+    while(keep_running){
+        if(stop_thread || !keep_running) break;
         cv::Mat frame;
         cap >> frame;
 
@@ -38,6 +47,8 @@ void CaptureWorker::capture_task(){
         res.distribute_task_to_proc(idx);
         res.distribute_task_to_inf(idx);
     }
+
+    std::this_thread::yield();
 }
 
 void CaptureWorker::do_capture(){

@@ -16,6 +16,7 @@ ProcessingWorker::~ProcessingWorker(){
     stop_thread = true;
     res.cv_proc.notify_all();
     if(process_thread.joinable()) process_thread.join();
+    std::cout<<"Processing Thread Destructor"<<std::endl;
 }
 
 void ProcessingWorker::start_worker(){
@@ -24,18 +25,19 @@ void ProcessingWorker::start_worker(){
 
 void ProcessingWorker::process_task(){
     pthread_setname_np(pthread_self(), "Processing Thread");
-    while(true){
+    while(keep_running){
         Long idx;
         {
             std::unique_lock<std::mutex> lock(res.m_proc);
-            res.cv_proc.wait(lock, [this] {return !res.processing_q.empty() || stop_thread;});
-            if(stop_thread && res.processing_q.empty()) break;
+            res.cv_proc.wait(lock, [this] {return !res.processing_q.empty() || stop_thread || !keep_running;});
+            if((stop_thread || !keep_running)&& res.processing_q.empty() ) break;
             idx = res.processing_q.front();
             res.processing_q.pop();
 
         }
         do_process(idx);
     }
+    std::this_thread::yield();
 }
 
 
@@ -111,7 +113,7 @@ void ProcessingWorker::do_process(Long idx){
         
     
         // 2. 연산 수행 
-        std::vector<unsigned char> hash = hash_frame_libsodium(slot.frame);
+        const std::vector<unsigned char> hash = hash_frame_libsodium(slot.frame);
         
         std::vector<unsigned char> signature = sign_frame_libsodium(hash, private_key.data());
         if(hash.empty()){
@@ -126,6 +128,7 @@ void ProcessingWorker::do_process(Long idx){
             slot.signature = signature; 
             slot.hash = hash;
             std::cout << "[" << slot.frame_id.load() << "] 서명, 해싱 성공" << std::endl;
+            verify_signature(hash, signature, public_key);
             // 이미 true이므로 상태 유지 
         }
     } else if (slot.frame.empty()) {
@@ -137,6 +140,32 @@ void ProcessingWorker::do_process(Long idx){
     slot.mark_done(res.send_q, res.m_send, res.cv_send);
 }
 
+bool ProcessingWorker::verify_signature(
+    const std::vector<unsigned char>& message,
+    const std::vector<unsigned char>& signature,
+    const std::vector<unsigned char>& public_key){
+    // 1. libsodium 초기화 확인
+    if (sodium_init() < 0) {
+        throw std::runtime_error("libsodium 초기화 실패");
+    }
+
+    // 2. 서명 검증 실행
+    // 결과가 0이면 성공, -1이면 위변조 또는 검증 실패입니다.
+    int result = crypto_sign_verify_detached(
+        signature.data(),      // 검증할 서명
+        message.data(),        // 원본 데이터 (또는 해시값)
+        message.size(),        // 데이터 크기
+        public_key.data()           // 송신자의 공개키
+    );
+
+    if (result == 0) {
+        std::cout << "서명이 유효합니다. (검증 성공)" << std::endl;
+        return true;
+    } else {
+        std::cerr << "서명이 올바르지 않습니다. (검증 실패)" << std::endl;
+        return false;
+    }
+}
 // void ProcessingWorker::do_process(Long idx){
 //    Slot& slot = res.slot_pool[idx];
 //    if(slot.is_valid){
